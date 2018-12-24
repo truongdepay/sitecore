@@ -1,0 +1,14 @@
+.left-sidebar {
+    top: 0px;
+    float: left;
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    position: fixed;
+    z-index: 100;
+}
+.content {
+    margin-top: 55px;
+    margin-left: 250px;
+    padding: 30px;
+}
