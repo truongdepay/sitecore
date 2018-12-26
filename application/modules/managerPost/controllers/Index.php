@@ -14,9 +14,12 @@ class Index extends MX_Controller
     {
         parent::__construct();
         $this->load->helper([
-            'url'
+            'url',
+            'form',
+            'validate'
         ]);
-
+        $this->load->config('config_notification');
+        $this->noError = config_item('notifyError');
     }
 
     public function index()
@@ -54,7 +57,28 @@ class Index extends MX_Controller
 
     private function create()
     {
+        $data = [];
+        $data['siteTitle'] = 'Thêm mới bài viết';
 
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $error = [];
+            $title = $this->input->post('title');
+            $slugs = $this->input->post('slugs');
+            $desc = $this->input->post('desc');
+            $content = $this->input->post('content');
+            $keywords = $this->input->post('keywords');
+            $tags = $this->input->post('tags');
+            if (!titleCheck($title)) {
+                $error['title'] = $this->noError['title'];
+            }
+            if (!descCheck($desc)) {
+                $error['desc'] = $this->noError['desc'];
+            }
+
+        }
+
+        $template = 'create';
+        $this->loadView($template, $data);
     }
 
     private function edit()
