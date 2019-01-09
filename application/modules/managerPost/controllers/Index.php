@@ -71,10 +71,15 @@ class Index extends MX_Controller
             if (!titleCheck($title)) {
                 $error['title'] = $this->noError['title'];
             }
+
             if (!descCheck($desc)) {
                 $error['desc'] = $this->noError['desc'];
             }
 
+            if (!slugsCheck($slugs)) {
+                $error['slugs'] = $this->noError['slugs'];
+            }
+            var_dump($error);
         }
 
         $template = 'create';
