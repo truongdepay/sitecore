@@ -31,7 +31,22 @@ if (!function_exists('descCheck')) {
      */
     function descCheck($desc = '')
     {
-        if (preg_match('/[.]{1,}/', $title, $match)) {
+        if (preg_match('/[.]{1,}/', $desc, $match)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+if (!function_exists('slugsCheck')) {
+    /**
+     * @param string $slugs
+     * @return bool
+     */
+    function slugsCheck($slugs = '')
+    {
+        if (preg_match('/^[a-z][-a-z0-9]*$/', $slugs, $match)) {
             return true;
         } else {
             return false;
