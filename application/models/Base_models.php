@@ -14,7 +14,7 @@ class Base_models extends CI_Model
      */
     public function add($data = array())
     {
-        $this->db->insert($this->tableName,$data);
+        $this->db->insert($this->tableName, $data);
         return $this->db->insert_id();
     }
 
@@ -28,5 +28,28 @@ class Base_models extends CI_Model
         $this->db->where($this->tableName . '.id', $id);
         $this->db->update($this->tableName , $data);
         return $this->db->affected_rows();
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function delete($id = '')
+    {
+        $this->db->where('id', $id);
+        $this->db->delete($this->tableName);
+        return $this->db->affected_rows();
+    }
+
+    /**
+     * @param $field
+     * @param $value
+     * @return mixed
+     */
+    public function checkExist($field, $value)
+    {
+        $this->db->from($this->tableName);
+        $this->db->where($this->tableName . '.' . $field, $value);
+        return $this->db->count_all_results();
     }
 }

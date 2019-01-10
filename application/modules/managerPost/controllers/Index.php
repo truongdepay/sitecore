@@ -20,6 +20,7 @@ class Index extends MX_Controller
         ]);
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
+        $this->load->model('postModel');
     }
 
     public function index()
@@ -68,6 +69,7 @@ class Index extends MX_Controller
             $content = $this->input->post('content');
             $keywords = $this->input->post('keywords');
             $tags = $this->input->post('tags');
+            $category = $this->input->post('category');
             if (!titleCheck($title)) {
                 $error['title'] = $this->noError['title'];
             }
@@ -79,7 +81,31 @@ class Index extends MX_Controller
             if (!slugsCheck($slugs)) {
                 $error['slugs'] = $this->noError['slugs'];
             }
-            var_dump($error);
+
+            $checkExistSlugs = $this->postModel->checkExist('slugs', $slugs);
+            if ($checkExistSlugs != 0) {
+                $error['dupSlugs'] = $this->noError['dupSlugs'];
+            }
+
+            if (empty($error)) {
+                $postData = [
+                    'slugs' => $slugs,
+//                    'status' => $status,
+                    'category' => $category,
+                    'title' => $title,
+                    'desc' => $desc,
+                    'content' => $content,
+//                    'thumb' => $thumb,
+//                    'type' => $type,
+//                    'order' => $order,
+                    'keywords' => $keywords,
+                    'tags' => $tags,
+                    'date_create' => time()
+                ];
+                $this->postModel->add($postData);
+            } else {
+                var_dump($error);
+            }
         }
 
         $template = 'create';
@@ -99,6 +125,30 @@ class Index extends MX_Controller
     private function category()
     {
 
+    }
+
+    public function createSlug()
+    {
+        $this->load->library([
+            'slugs',
+            'output'
+        ]);
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $title = $this->input->post('title');
+            $slugs = $this->slugs->create($title);
+            $check = $this->postModel->checkExist('slugs', $slugs);
+            if ($check != 0) {
+                $notify = $this->noError['dupSlugs'];
+            } else {
+                $notify = '';
+            }
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'slugs' => $slugs,
+                    'notify' => $notify
+                ]));
+        }
     }
 
     private function loadView($template, $data)

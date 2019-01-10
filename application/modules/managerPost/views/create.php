@@ -12,11 +12,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?= form_open('managerPost/index/index?action=create'); ?>
 <div class="form-group">
     <label for="title">Tiêu đề</label>
-    <input type="text" class="form-control" id="title" placeholder="" name="title">
+    <input type="text" class="form-control" id="title" placeholder="" name="title" url-data="/managerPost/index/createSlug">
 </div>
 <div class="form-group">
     <label for="title">Slugs</label>
-    <input type="text" class="form-control" id="slugs" placeholder="" name="slugs">
+    <input type="text" class="form-control" id="slugs" placeholder="" name="slugs" url-data="/managerPost/index/createSlug">
+    <span class="error-slugs text-danger"></span>
 </div>
 <div class="form-group">
     <label for="desc">Mô tả</label>
@@ -44,5 +45,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <option>5</option>
     </select>
 </div>
+<div class="form-group">
+    <label for="thumb">Ảnh</label>
+    <input type="file" class="" name="thumb" id="thumb" onchange="previewFile()">
+    <img src="" alt="" class="" id="thumb-preview" width="100px">
+</div>
 <input type="submit" name="save" id="save" class="btn btn-primary" value="Lưu">
 <?= form_close(); ?>
+<script>
+    function previewFile(){
+        var preview = document.getElementById('thumb-preview'); //selects the query named img
+        var file    = document.getElementById('thumb').files[0]; //sames as here
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file); //reads the data as a URL
+        } else {
+            preview.src = "";
+        }
+    }
+</script>
