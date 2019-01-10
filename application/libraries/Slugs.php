@@ -16,7 +16,7 @@ class Slugs
         $this->SLUGS = new Slugify();
     }
 
-    public function creat($str = '')
+    public function create($str = '')
     {
         return $this->SLUGS->slugify($str);
     }
