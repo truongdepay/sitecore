@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?= form_open('managerProduct/index/index?action=create'); ?>
 <div class="form-group">
     <label for="title">Tiêu đề sản phẩm</label>
-    <input type="text" class="form-control" id="title" placeholder="" name="title">
+    <input type="text" class="form-control" id="title" placeholder="" name="title" url-data="managerProduct/index/createSlug">
 </div>
 <div class="form-group">
     <label for="title">Slugs</label>

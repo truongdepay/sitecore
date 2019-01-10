@@ -463,7 +463,8 @@ $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array(
     'API/postControllers/index',
     'ApiPosts/createControllers/create',
-    'managerProduct/index/createSlug'
+    'managerProduct/index/createSlug',
+    'managerPost/index/createSlug'
 );
 
 /*

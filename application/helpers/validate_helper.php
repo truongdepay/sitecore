@@ -16,7 +16,7 @@ if (!function_exists('titleCheck')) {
      */
     function titleCheck($title = '')
     {
-        if (preg_match('/[.]{1,}/', $title, $match)) {
+        if (preg_match('/.{1,}/', $title, $match)) {
             return true;
         } else {
             return false;
@@ -31,7 +31,7 @@ if (!function_exists('descCheck')) {
      */
     function descCheck($desc = '')
     {
-        if (preg_match('/[.]{1,}/', $desc, $match)) {
+        if (preg_match('/.{1,}/', $desc, $match)) {
             return true;
         } else {
             return false;

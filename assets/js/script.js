@@ -1,9 +1,12 @@
 $(document).ready(function(){
-    var title;
-    var host = window.location.origin;
-    var url = host + '/managerProduct/index/createSlug';
-
+    /**
+     * Xu ly khi nhap tieu de bai viet tao slugs
+     */
     $("#title").on('input', function () {
+        var title;
+        var host = window.location.origin;
+        var uri = $(this).attr('url-data');
+        var url = host + uri;
         title = $(this).val();
         $.ajax({
             url : url,
@@ -12,6 +15,27 @@ $(document).ready(function(){
             dataType : 'json',
             success : function (result) {
                 $("#slugs").val(result.slugs);
+                $(".error-slugs").html(result.notify);
+            }
+        });
+    });
+
+    /**
+     * Xu ly khi edit slugs
+     */
+    $("#slugs").on('input', function () {
+        var title;
+        var host = window.location.origin;
+        var uri = $(this).attr('url-data');
+        var url = host + uri;
+        title = $(this).val();
+        $.ajax({
+            url : url,
+            type : 'post',
+            data : {title : title},
+            dataType : 'json',
+            success : function (result) {
+                $(".error-slugs").html(result.notify);
             }
         });
     });
