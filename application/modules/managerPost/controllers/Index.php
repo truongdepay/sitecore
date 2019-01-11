@@ -21,6 +21,8 @@ class Index extends MX_Controller
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
         $this->load->model('postModel');
+        $this->load->config('config_upload');
+        $this->configImg = config_item('img');
     }
 
     public function index()
@@ -88,21 +90,30 @@ class Index extends MX_Controller
             }
 
             if (empty($error)) {
-                $postData = [
-                    'slugs' => $slugs,
+                $checkUpload = $this->do_upload($slugs);
+                if (isset($checkUpload['error'])) {
+                    $error['uploadImages'] = $this->noError['uploadImages'];
+                }
+                if (empty($error)) {
+                    $thumb = $this->configImg['upload_path'] . $slugs . '/' . $checkUpload['upload_data']['raw_name'] . $checkUpload['upload_data']['file_ext'];
+                    $postData = [
+                        'slugs' => $slugs,
 //                    'status' => $status,
-                    'category' => $category,
-                    'title' => $title,
-                    'desc' => $desc,
-                    'content' => $content,
-//                    'thumb' => $thumb,
+                        'category' => $category,
+                        'title' => $title,
+                        'desc' => $desc,
+                        'content' => $content,
+                        'thumb' => $thumb,
 //                    'type' => $type,
 //                    'order' => $order,
-                    'keywords' => $keywords,
-                    'tags' => $tags,
-                    'date_create' => time()
-                ];
-                $this->postModel->add($postData);
+                        'keywords' => $keywords,
+                        'tags' => $tags,
+                        'date_create' => time()
+                    ];
+                    $this->postModel->add($postData);
+                } else {
+                    var_dump($error);
+                }
             } else {
                 var_dump($error);
             }
@@ -157,5 +168,30 @@ class Index extends MX_Controller
         $this->load->view(config_item('pathHeader'), $data);
         $this->load->view($template, $data);
         $this->load->view(config_item('pathFooter'), $data);
+    }
+
+    private function do_upload($slugs)
+    {
+        if (!file_exists($this->configImg['upload_path'] . $slugs)) {
+            mkdir($this->configImg['upload_path'] . $slugs, 0777, true);
+        }
+
+        $config['upload_path'] = $this->configImg['upload_path'] . $slugs . '/';
+        $config['allowed_types'] = $this->configImg['allowed_types'];
+        $config['max_size'] = $this->configImg['max_size'];
+        $config['max_width'] = $this->configImg['max_width'];
+        $config['max_height'] = $this->configImg['max_height'];
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('thumb'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            return $error;
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            return $data;
+        }
     }
 }
