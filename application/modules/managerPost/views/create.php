@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 ?>
 
-<?= form_open('managerPost/index/index?action=create'); ?>
+<?= form_open_multipart('managerPost/index/index?action=create'); ?>
 <div class="form-group">
     <label for="title">Tiêu đề</label>
     <input type="text" class="form-control" id="title" placeholder="" name="title" url-data="/managerPost/index/createSlug">
