@@ -176,7 +176,7 @@ class Index extends MX_Controller
             mkdir($this->configImg['upload_path'] . $slugs, 0777, true);
         }
 
-        $config['upload_path'] = $this->configImg['upload_path'] . $slugs . '/';
+        $config['upload_path'] = './' .$this->configImg['upload_path'] . $slugs . '/';
         $config['allowed_types'] = $this->configImg['allowed_types'];
         $config['max_size'] = $this->configImg['max_size'];
         $config['max_width'] = $this->configImg['max_width'];

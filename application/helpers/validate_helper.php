@@ -46,7 +46,7 @@ if (!function_exists('slugsCheck')) {
      */
     function slugsCheck($slugs = '')
     {
-        if (preg_match('/^[a-z][-a-z0-9]*$/', $slugs, $match)) {
+        if (preg_match('/^[0-9A-Za-z][-a-z0-9]*$/', $slugs, $match)) {
             return true;
         } else {
             return false;
