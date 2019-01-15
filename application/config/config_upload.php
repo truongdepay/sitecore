@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 $config['img'] = [
-    'upload_path' => './uploads/img/',
+    'upload_path' => 'uploads/img/',
     'allowed_types' => 'gif|jpg|png',
     'max_size' => 5000,
     'max_width' => 5000,

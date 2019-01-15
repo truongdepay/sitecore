@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Anton|Noto+Serif:400,400i,700,700i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.min.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/fontawesome/css/all.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles.css')?>">
 </head>
 <body>

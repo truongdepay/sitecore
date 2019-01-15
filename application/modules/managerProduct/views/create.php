@@ -9,44 +9,75 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 ?>
 <h3><?= $siteTitle ?></h3>
-<?= form_open('managerProduct/index/index?action=create'); ?>
+<?= form_open_multipart('managerProduct/index/index?action=create'); ?>
 <div class="form-group">
     <label for="title">Tiêu đề sản phẩm</label>
-    <input type="text" class="form-control" id="title" placeholder="" name="title" url-data="managerProduct/index/createSlug">
+    <input type="text" class="form-control" id="title" placeholder="" name="title" url-data="/managerProduct/index/createSlug" value="<?= keepData('dataProduct','title') ?>">
 </div>
 <div class="form-group">
     <label for="title">Slugs</label>
-    <input type="text" class="form-control" id="slugs" placeholder="" name="slugs">
+    <input type="text" class="form-control" id="slugs" placeholder="" name="slugs" url-data="/managerProduct/index/createSlug" value="<?= keepData('dataProduct','slugs') ?>">
+    <span class="error-slugs text-danger"></span>
 </div>
 <div class="form-group">
     <label for="desc">Mô tả</label>
-    <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+    <textarea class="form-control" id="desc" rows="3" name="desc"><?= keepData('dataProduct','desc') ?></textarea>
 </div>
 <div class="form-group">
     <label for="content">Nội dung</label>
-    <textarea class="form-control" id="content" rows="3" name="content"></textarea>
+    <textarea class="form-control" id="content" rows="3" name="content"><?= keepData('dataProduct','content') ?></textarea>
 </div>
 <div class="form-group">
     <label for="price">Giá</label>
-    <input type="number" class="form-control" id="price" placeholder="" name="price">
+    <input type="number" class="form-control" id="price" placeholder="" name="price" value="<?= keepData('dataProduct','price') ?>">
 </div>
 <div class="form-group">
     <label for="keywords">Từ khóa</label>
-    <input type="text" class="form-control" id="keywords" placeholder="" name="keywords">
+    <input type="text" class="form-control" id="keywords" placeholder="" name="keywords" value="<?= keepData('dataProduct','keywords') ?>">
 </div>
 <div class="form-group">
     <label for="tags">Tags</label>
-    <input type="text" class="form-control" id="tags" placeholder="" name="tags">
+    <input type="text" class="form-control" id="tags" placeholder="" name="tags" value="<?= keepData('dataProduct','tags') ?>">
 </div>
 <div class="form-group">
     <label for="category">Danh mục</label>
-    <select class="form-control" id="category">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+    <select class="form-control" id="category" name="category">
+        <option value="1">1</option>
+        <option value="1">2</option>
+        <option value="1">3</option>
+        <option value="1">4</option>
+        <option value="1">5</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="thumb">Ảnh</label>
+    <input type="file" class="" name="thumb" id="thumb" onchange="previewFile()">
+    <img src="" alt="" class="" id="thumb-preview" width="100px">
+</div>
+<div class="form-group">
+    <label for="status">Trạng thái</label>
+    <select class="form-control" id="status" name="status">
+        <option value="">Chọn trạng thái</option>
+        <option value="1">Công khai</option>
+        <option value="0">Lưu nháp</option>
     </select>
 </div>
 <input type="submit" name="save" id="save" class="btn btn-primary" value="Lưu">
 <?= form_close(); ?>
+<script>
+    function previewFile(){
+        var preview = document.getElementById('thumb-preview'); //selects the query named img
+        var file    = document.getElementById('thumb').files[0]; //sames as here
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file); //reads the data as a URL
+        } else {
+            preview.src = "";
+        }
+    }
+</script>
