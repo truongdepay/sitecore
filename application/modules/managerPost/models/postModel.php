@@ -33,4 +33,30 @@ class postModel extends Base_models
         $this->authorModify = 'author_modify';
     }
 
+    public function getResult($where = [], $limit = 10, $start = 0, $orderField = 'id', $order = 'DESC')
+    {
+        $this->db->select('
+            *
+        ');
+        $this->db->from($this->tableName);
+
+        if (!empty($where)) {
+            foreach ($where as $field => $value) {
+                $this->db->where($this->tableName . '.' . $field, $value);
+            }
+        }
+
+        $this->db->limit($limit, $start);
+        $this->db->order_by($this->tableName . '.' . $orderField, $order);
+        return $this->db->get()->result();
+    }
+
+    public function getInfo($id)
+    {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where($this->tableName . '.' . $this->id, $id);
+        return $this->db->get()->row();
+    }
+
 }

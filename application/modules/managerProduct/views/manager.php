@@ -69,9 +69,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </table>
     </div>
 </div>
-
-<script>
-    function viewMore(id) {
-        alert(id);
-    }
-</script>

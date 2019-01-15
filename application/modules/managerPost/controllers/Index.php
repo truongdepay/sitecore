@@ -16,7 +16,11 @@ class Index extends MX_Controller
         $this->load->helper([
             'url',
             'form',
-            'validate'
+            'validate',
+            'elements',
+        ]);
+        $this->load->library([
+            'session'
         ]);
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
@@ -54,6 +58,10 @@ class Index extends MX_Controller
     {
         $data = [];
         $data['siteTitle'] = 'Quản lý bài viết';
+
+        $result = $this->postModel->getResult();
+        $data['result'] = $result;
+
         $template = 'manager';
         $this->loadView($template, $data);
     }
@@ -72,6 +80,22 @@ class Index extends MX_Controller
             $keywords = $this->input->post('keywords');
             $tags = $this->input->post('tags');
             $category = $this->input->post('category');
+
+            $flashData = [
+                'slugs' => $slugs,
+//                'status' => $status,
+                'category' => $category,
+                'title' => $title,
+                'desc' => $desc,
+                'content' => $content,
+//                'thumb' => $thumb,
+//                    'type' => $type,
+//                    'order' => $order,
+                'keywords' => $keywords,
+                'tags' => $tags,
+            ];
+            $this->session->set_flashdata('dataPost', $flashData);
+
             if (!titleCheck($title)) {
                 $error['title'] = $this->noError['title'];
             }
@@ -125,7 +149,16 @@ class Index extends MX_Controller
 
     private function edit()
     {
+        $data = [];
+        $data['siteTitle'] = 'Sửa bài viết';
 
+        $id = $this->input->get('id');
+        $item = $this->postModel->getInfo($id);
+        $data['item'] = $item;
+        $data['id'] = $id;
+
+        $template = 'edit';
+        $this->loadView($template, $data);
     }
 
     private function delete()
@@ -144,15 +177,29 @@ class Index extends MX_Controller
             'slugs',
             'output'
         ]);
+
+        $action = $this->input->get('action');
+        $id = $this->input->get('id');
+        if (isset($action) && $action === 'edit') {
+            $info = $this->postModel->getInfo($id);
+        }
+
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $title = $this->input->post('title');
             $slugs = $this->slugs->create($title);
-            $check = $this->postModel->checkExist('slugs', $slugs);
-            if ($check != 0) {
-                $notify = $this->noError['dupSlugs'];
-            } else {
+
+            if ($action == 'edit' && $slugs == $info->slugs) {
                 $notify = '';
+            } else {
+                $check = $this->postModel->checkExist('slugs', $slugs);
+                if ($check != 0) {
+                    $notify = $this->noError['dupSlugs'];
+                } else {
+                    $notify = '';
+                }
             }
+
+
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode([
