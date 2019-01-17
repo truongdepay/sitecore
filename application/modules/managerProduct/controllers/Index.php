@@ -120,12 +120,20 @@ class Index extends MX_Controller
             }
 
             if (empty($error)) {
-                $checkUpload = $this->do_upload($slugs);
+                if ($_FILES['thumb']['error'] != 4) {
+                    $checkUpload = $this->do_upload($slugs);
+                }
+
                 if (isset($checkUpload['error'])) {
                     $error['uploadImages'] = $this->noError['uploadImages'];
                 }
                 if (empty($error)) {
-                    $thumb = $this->configImg['upload_path'] . $slugs . '/' . $checkUpload['upload_data']['raw_name'] . $checkUpload['upload_data']['file_ext'];
+                    if ($_FILES['thumb']['error'] == 4) {
+                        $thumb = $item->thumb;
+                    } else {
+                        $thumb = $this->configImg['upload_path'] . $slugs . '/' . $checkUpload['upload_data']['raw_name'] . $checkUpload['upload_data']['file_ext'];
+                    }
+
                     $postData = [
                         'slugs' => $slugs,
                         'status' => $status,
@@ -191,15 +199,25 @@ class Index extends MX_Controller
             'slugs',
             'output'
         ]);
+        $action = $this->input->get('action');
+        $id = $this->input->get('id');
+
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $title = $this->input->post('title');
             $slugs = $this->slugs->create($title);
-            $check = $this->productModel->checkExist('slugs', $slugs);
+
+            if ($action == 'edit') {
+                $check = $this->productModel->checkExist('slugs', $slugs, $id);
+            } else {
+                $check = $this->productModel->checkExist('slugs', $slugs);
+            }
+
             if ($check != 0) {
                 $notify = $this->noError['dupSlugs'];
             } else {
                 $notify = '';
             }
+
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode([

@@ -8,7 +8,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Time: 1:55 PM
  */
 ?>
-
+<h3><?= $siteTitle; ?></h3>
+<?php
+    if ($this->session->userdata('error')) {
+        echo displayError($this->session->userdata('error'));
+    }
+?>
 <?= form_open_multipart('managerPost/index/index?action=create'); ?>
 <div class="form-group">
     <label for="title">Tiêu đề</label>
@@ -49,6 +54,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <label for="thumb">Ảnh</label>
     <input type="file" class="" name="thumb" id="thumb" onchange="previewFile()">
     <img src="" alt="" class="" id="thumb-preview" width="100px">
+</div>
+<div class="form-group">
+    <label for="status">Danh mục</label>
+    <select class="form-control" id="status" name="status">
+        <option value="0">Lưu nháp</option>
+        <option value="1">Công khai</option>
+    </select>
 </div>
 <input type="submit" name="save" id="save" class="btn btn-primary" value="Lưu">
 <?= form_close(); ?>

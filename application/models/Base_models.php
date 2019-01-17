@@ -46,10 +46,13 @@ class Base_models extends CI_Model
      * @param $value
      * @return mixed
      */
-    public function checkExist($field, $value)
+    public function checkExist($field, $value, $notId = '')
     {
         $this->db->from($this->tableName);
         $this->db->where($this->tableName . '.' . $field, $value);
+        if (!empty($notId)) {
+            $this->db->where($this->tableName . '.' . $this->id . ' != ', $notId);
+        }
         return $this->db->count_all_results();
     }
 }
