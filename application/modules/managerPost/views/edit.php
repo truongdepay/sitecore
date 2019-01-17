@@ -8,7 +8,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Time: 2:59 PM
  */
 ?>
-
+<h3><?= $siteTitle; ?></h3>
+<?php
+if ($this->session->userdata('error')) {
+    echo displayError($this->session->userdata('error'));
+}
+?>
 <?= form_open_multipart('managerPost/index/index?action=edit&id=' . $id); ?>
 <div class="form-group">
     <label for="title">Tiêu đề</label>
