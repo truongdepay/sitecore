@@ -129,7 +129,7 @@ class Index extends MX_Controller
                 }
                 if (empty($error)) {
                     if ($_FILES['thumb']['error'] == 4) {
-                        $thumb = $item->thumb;
+                        $thumb = null;
                     } else {
                         $thumb = $this->configImg['upload_path'] . $slugs . '/' . $checkUpload['upload_data']['raw_name'] . $checkUpload['upload_data']['file_ext'];
                     }
@@ -150,11 +150,13 @@ class Index extends MX_Controller
                         'price' => $price
                     ];
                     $this->productModel->add($postData);
+                    $this->session->set_flashdata('success', true);
+                    redirect('managerProduct/index/index?action=manager');
                 } else {
-                    var_dump($error);
+                    $this->session->set_flashdata('error', $error);
                 }
             } else {
-                var_dump($error);
+                $this->session->set_flashdata('error', $error);
             }
         }
         $template = 'create';
@@ -170,6 +172,86 @@ class Index extends MX_Controller
         $item = $this->productModel->getInfo($id);
         $data['item'] = $item;
         $data['id'] = $id;
+
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $error = [];
+            $title = $this->input->post('title');
+            $slugs = $this->input->post('slugs');
+            $desc = $this->input->post('desc');
+            $content = $this->input->post('content');
+            $keywords = $this->input->post('keywords');
+            $tags = $this->input->post('tags');
+            $category = $this->input->post('category');
+
+            $flashData = [
+                'slugs' => $slugs,
+//                'status' => $status,
+                'category' => $category,
+                'title' => $title,
+                'desc' => $desc,
+                'content' => $content,
+//                'thumb' => $thumb,
+//                    'type' => $type,
+//                    'order' => $order,
+                'keywords' => $keywords,
+                'tags' => $tags,
+            ];
+            $this->session->set_flashdata('dataPost', $flashData);
+
+            if (!titleCheck($title)) {
+                $error['title'] = $this->noError['title'];
+            }
+
+            if (!descCheck($desc)) {
+                $error['desc'] = $this->noError['desc'];
+            }
+
+            if (!slugsCheck($slugs)) {
+                $error['slugs'] = $this->noError['slugs'];
+            }
+
+            $checkExistSlugs = $this->productModel->checkExist('slugs', $slugs, $id);
+            if ($checkExistSlugs != 0) {
+                $error['dupSlugs'] = $this->noError['dupSlugs'];
+            }
+
+            if (empty($error)) {
+                if ($_FILES['thumb']['error'] != 4) {
+                    $checkUpload = $this->do_upload($slugs);
+                }
+
+                if (isset($checkUpload['error'])) {
+                    $error['uploadImages'] = $this->noError['uploadImages'];
+                }
+                if (empty($error)) {
+                    if ($_FILES['thumb']['error'] == 4) {
+                        $thumb = $item->thumb;
+                    } else {
+                        $thumb = $this->configImg['upload_path'] . $slugs . '/' . $checkUpload['upload_data']['raw_name'] . $checkUpload['upload_data']['file_ext'];
+                    }
+
+                    $postData = [
+                        'slugs' => $slugs,
+//                    'status' => $status,
+                        'category' => $category,
+                        'title' => $title,
+                        'desc' => $desc,
+                        'content' => $content,
+                        'thumb' => $thumb,
+//                    'type' => $type,
+//                    'order' => $order,
+                        'keywords' => $keywords,
+                        'tags' => $tags,
+                        'date_create' => time()
+                    ];
+                    $this->productModel->update($id, $postData);
+                } else {
+                    $this->session->set_flashdata('error', $error);
+                }
+            } else {
+                $this->session->set_flashdata('error', $error);
+            }
+        }
 
         $template = 'edit';
         $this->loadView($template, $data);
