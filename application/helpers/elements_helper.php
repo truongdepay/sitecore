@@ -51,3 +51,15 @@ if (!function_exists('keepData')) {
         }
     }
 }
+
+if (!function_exists('displayError')) {
+    function displayError($error)
+    {
+        $str = '';
+        foreach ($error as $value) {
+            $str .= '<p class="d-block">' . $value . '</p>';
+        }
+        $html = '<div class="alert alert-danger" role="alert">' . $str . '</div>';
+        return $html;
+    }
+}

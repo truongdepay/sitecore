@@ -17,6 +17,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/fontawesome/css/all.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles.css')?>">
+    <script src="<?= base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets/js/bootstrap.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/script.js'); ?>"></script>
 </head>
 <body>
 	<div id="main">
@@ -33,7 +37,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="list-group mt-2">
                     <a href="<?= site_url('managerPost/index/index?action=index'); ?>" class="list-group-item list-group-item-action rounded-0">Quản lý bài viết</a>
                     <a href="<?= site_url('managerPost/index/index?action=create'); ?>" class="list-group-item list-group-item-action">Thêm mới bài viết</a>
-                    <a href="<?= site_url('managerPost/index/index?action=category'); ?>" class="list-group-item list-group-item-action rounded-0">Danh mục bài viết</a>
+                </div>
+                <div class="list-group mt-2">
+                    <a href="<?= site_url('managerProduct/index/index?action=index'); ?>" class="list-group-item list-group-item-action rounded-0">Quản lý sản phẩm</a>
+                    <a href="<?= site_url('managerProduct/index/index?action=create'); ?>" class="list-group-item list-group-item-action">Thêm mới sản phẩm</a>
+                </div>
+                <div class="list-group mt-2">
+                    <a href="<?= site_url('managerCat/index/index?action=index'); ?>" class="list-group-item list-group-item-action rounded-0">Quản lý Danh mục</a>
+                    <a href="<?= site_url('managerCat/index/index?action=create'); ?>" class="list-group-item list-group-item-action">Thêm mới danh mục</a>
                 </div>
             </div>
             <div class="content">

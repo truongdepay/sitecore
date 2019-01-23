@@ -9,6 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 ?>
 <h3><?= $siteTitle ?></h3>
+<?php
+if ($this->session->userdata('error')) {
+    echo displayError($this->session->userdata('error'));
+}
+?>
 <?= form_open_multipart('managerProduct/index/index?action=create'); ?>
 <div class="form-group">
     <label for="title">Tiêu đề sản phẩm</label>

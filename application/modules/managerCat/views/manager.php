@@ -49,27 +49,27 @@ if ($this->session->userdata('success')) {
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th></th>
                 <th scope="col">Tiêu đề</th>
                 <th scope="col">Trạng thái</th>
-                <th scope="col">Danh mục</th>
+                <th scope="col">Danh mục cha</th>
+                <th scope="col">Kiểu</th>
                 <th scope="col">##</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($result as $key => $value) { ?>
-            <tr>
-                <th scope="row"><?= $value->id; ?></th>
-                <th><img src="<?= base_url($value->thumb); ?>" alt="" width="64px"></th>
-                <td><?= $value->title; ?></td>
-                <td><?= convertStatus($value->status); ?></td>
-                <td><?= $value->category; ?></td>
-                <td>
-                    <button onclick="window.open('<?= site_url('managerProduct/index/index?action=edit&id=' . $value->id); ?>', '_parent');" class="btn btn-default text-info"><i class="far fa-edit"></i></button>
-                    <button onclick="window.open('<?= site_url('managerProduct/index/index?action=delete&id=' . $value->id); ?>', '_parent')" class="btn btn-default text-danger"><i class="far fa-trash-alt"></i></button>
-                    <button data-toggle="modal" data-target="#exampleModalLong-<?= $value->id ?>" class="btn btn-default text-primary"><i class="fas fa-info-circle"></i></button>
-                </td>
-            </tr>
+                <tr>
+                    <th scope="row"><?= $value->id; ?></th>
+                    <td><?= $value->title; ?></td>
+                    <td><?= convertStatus($value->status); ?></td>
+                    <td><?= $value->parent; ?></td>
+                    <td><?= $value->type; ?></td>
+                    <td>
+                        <button onclick="window.open('<?= site_url('managerCat/index/index?action=edit&id=' . $value->id); ?>', '_parent');" class="btn btn-default text-info"><i class="far fa-edit"></i></button>
+                        <button onclick="window.open('<?= site_url('managerCat/index/index?action=delete&id=' . $value->id); ?>', '_parent')" class="btn btn-default text-danger"><i class="far fa-trash-alt"></i></button>
+                        <button data-toggle="modal" data-target="#exampleModalLong-<?= $value->id ?>" class="btn btn-default text-primary"><i class="fas fa-info-circle"></i></button>
+                    </td>
+                </tr>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModalLong-<?= $value->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -82,7 +82,6 @@ if ($this->session->userdata('success')) {
                             </div>
                             <div class="modal-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item">Giá: <span class="font-weight-bold"><?= number_format($value->price); ?><span class="text-danger"> VND</span></span></li>
                                     <li class="list-group-item">Ngày đăng: <?= date('d/m/Y', $value->date_create); ?></li>
                                     <li class="list-group-item">Người đăng: <?= $value->author; ?></li>
                                     <li class="list-group-item">Ngày sửa cuối: <?= date('d/m/Y', $value->date_modify); ?></li>

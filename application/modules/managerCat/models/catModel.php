@@ -8,13 +8,13 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'models/Base_models.php';
-class postModel extends Base_models
+class catModel extends Base_models
 {
     public function __construct()
     {
         parent::__construct();
         $this->db = $this->load->database('default', TRUE, TRUE);
-        $this->tableName = 'posts';
+        $this->tableName = 'category';
         $this->id = 'id';
         $this->slugs = 'slugs';
         $this->status = 'status';
@@ -58,5 +58,4 @@ class postModel extends Base_models
         $this->db->where($this->tableName . '.' . $this->id, $id);
         return $this->db->get()->row();
     }
-
 }
