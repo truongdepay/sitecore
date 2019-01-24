@@ -67,7 +67,8 @@ class Index extends MX_Controller
     {
         $data = [];
         $data['siteTitle'] = 'Thêm mới danh mục';
-
+        $listCat = $this->catModel->getResult(['status' => 1], 10, 0);
+        $data['listCat'] = $listCat;
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $error = [];
             $title = $this->input->post('title');
@@ -119,6 +120,66 @@ class Index extends MX_Controller
         $this->loadView($template, $data);
     }
 
+    private function edit()
+    {
+        $data = [];
+        $data['siteTitle'] = 'Sửa danh mục';
+        $id = $this->input->get('id');
+        $item = $this->catModel->getInfo($id);
+        $data['item'] = $item;
+        $data['id'] = $id;
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $error = [];
+            $title = $this->input->post('title');
+            $slugs = $this->input->post('slugs');
+            $parent = $this->input->post('parent');
+            $status = $this->input->post('status');
+            $type = $this->input->post('type');
+
+            $flashData = [
+                'slugs' => $slugs,
+                'status' => $status,
+                'parent' => $parent,
+                'title' => $title,
+                'type' => $type
+            ];
+            $this->session->set_flashdata('dataCat', $flashData);
+
+            if (!titleCheck($title)) {
+                $error['title'] = $this->noError['title'];
+            }
+
+            if (!slugsCheck($slugs)) {
+                $error['slugs'] = $this->noError['slugs'];
+            }
+
+            $checkExistSlugs = $this->catModel->checkExist('slugs', $slugs, $id);
+            if ($checkExistSlugs != 0) {
+                $error['dupSlugs'] = $this->noError['dupSlugs'];
+            }
+
+            if (empty($error)) {
+                $catData = [
+                    'title' => $title,
+                    'slugs' => $slugs,
+                    'status' => $status,
+                    'parent' => $parent,
+                    'type' => $type,
+                    'date_create' => time()
+                ];
+                $this->catModel->update($id, $catData);
+                $this->session->set_flashdata('success', true);
+                redirect('managerCat/index/index?action=manager');
+            } else {
+                $this->session->set_flashdata('error', $error);
+            }
+        }
+
+        $template = 'edit';
+        $this->loadView($template, $data);
+    }
+
     private function loadView($template, $data)
     {
         $this->load->config('config_template');
@@ -135,7 +196,6 @@ class Index extends MX_Controller
         ]);
         $action = $this->input->get('action');
         $id = $this->input->get('id');
-
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $title = $this->input->post('title');
             $slugs = $this->slugs->create($title);
