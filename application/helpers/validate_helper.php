@@ -53,3 +53,36 @@ if (!function_exists('slugsCheck')) {
         }
     }
 }
+
+if (!function_exists('fullnameCheck')) {
+    function fullnameCheck($fullname)
+    {
+        if (preg_match('/.*/', $fullname, $match)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+if (!function_exists('usernameCheck')) {
+    function usernameCheck($username)
+    {
+        if (preg_match('/^[a-zA-Z0-9\_\-]*$/', $username, $match)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+if (!function_exists('passwordCheck')) {
+    function passwordCheck($password)
+    {
+        if (preg_match('/^[a-zA-Z0-9\!\@\#\$\%\^\&]{6,56}$/', $password, $match)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
