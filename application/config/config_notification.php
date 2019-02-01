@@ -21,3 +21,9 @@ $config['notifyError'] = [
     'token' => '** Token không hợp lệ!',
     'loginFail' => '** Sai thông tin đăng nhập, vui lòng thử lại'
 ];
+
+$config['notifyCommon'] = [
+    'add' => 'Thêm thành công',
+    'edit' => 'Sửa thành công',
+    'delete' => 'Xóa thành công'
+];

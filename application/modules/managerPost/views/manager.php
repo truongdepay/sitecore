@@ -46,6 +46,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-12">
         <h3><?= $siteTitle ?></h3>
     </div>
+
+    <?php
+    if ($this->session->userdata('edit')) {
+    ?>
+    <div class="alert alert-success" role="alert">
+        Sửa thành công bài viết có ID: <?= $this->session->userdata('edit'); ?>
+    </div>
+        <?php
+    }
+    ?>
+
     <div class="col-12">
         <table class="table table-striped">
             <thead>
@@ -65,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th><img src="<?= base_url($value->thumb); ?>" alt="" width="64px"></th>
                     <td><?= $value->title; ?></td>
                     <td><?= convertStatus($value->status); ?></td>
-                    <td><?= $value->category; ?></td>
+                    <td><?= $value->cat_title; ?></td>
                     <td>
                         <button onclick="window.open('<?= site_url('managerPost/index/index?action=edit&id=' . $value->id); ?>', '_parent');" class="btn btn-default text-info"><i class="far fa-edit"></i></button>
                         <button data-toggle="modal" data-target="#deleteModal-<?= $value->id ?>" class="btn btn-default text-danger"><i class="far fa-trash-alt"></i></button>
