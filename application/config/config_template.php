@@ -7,4 +7,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Last Modified time: 2018-04-25 00:50:37
  */
 $config['pathHeader']  = 'includes/header';
+$config['pathHeaderAdmin']  = 'includes/header_admin';
 $config['pathFooter']  = 'includes/footer';

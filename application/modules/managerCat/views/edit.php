@@ -13,14 +13,14 @@ if ($this->session->userdata('error')) {
     echo displayError($this->session->userdata('error'));
 }
 ?>
-<?= form_open_multipart('managerCat/index/index?action=create'); ?>
+<?= form_open_multipart('managerCat/index/index?action=edit&id=' . $id); ?>
 <div class="form-group">
     <label for="title">Tiêu đề danh mục</label>
-    <input type="text" class="form-control" id="title" placeholder="" name="title" url-data="/managerCat/index/createSlug" value="<?= keepData('dataCat','title') ?>">
+    <input type="text" class="form-control" id="title" placeholder="" name="title" url-data="/managerCat/index/createSlug?action=edit&id=<?= $id; ?>" value="<?= keepData('dataCat','title', $item->title); ?>">
 </div>
 <div class="form-group">
     <label for="title">Slugs</label>
-    <input type="text" class="form-control" id="slugs" placeholder="" name="slugs" url-data="/managerCat/index/createSlug" value="<?= keepData('dataCat','slugs') ?>">
+    <input type="text" class="form-control" id="slugs" placeholder="" name="slugs" url-data="/managerCat/index/createSlug?action=edit&id=<?= $id; ?>" value="<?= keepData('dataCat','slugs', $item->slugs); ?>">
     <span class="error-slugs text-danger"></span>
 </div>
 <div class="form-group">
@@ -34,11 +34,6 @@ if ($this->session->userdata('error')) {
     <label for="parent">Danh mục cha</label>
     <select class="form-control" id="parent" name="parent">
         <option value="0">Không chọn(mặc định là cha)</option>
-        <?php foreach ($listCat as $item) {
-            ?>
-            <option value="<?= $item->id ?>"><?= $item->title ?></option>
-        <?php
-        } ?>
     </select>
 </div>
 
