@@ -14,3 +14,9 @@ $config['notifyError'] = [
     'dupSlugs' => '** Slugs này đã được sử dụng, vui lòng sửa lại cho hợp lệ',
     'uploadImages' => '** Vui lòng up ảnh nhỏ hơn 5MB'
 ];
+
+$config['notifyCommon'] = [
+    'add' => 'Thêm thành công',
+    'edit' => 'Sửa thành công',
+    'delete' => 'Xóa thành công'
+];

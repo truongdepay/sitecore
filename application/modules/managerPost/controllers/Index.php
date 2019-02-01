@@ -25,6 +25,7 @@ class Index extends MX_Controller
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
         $this->load->model('postModel');
+        $this->load->model('catModel');
         $this->load->config('config_upload');
         $this->configImg = config_item('img');
     }
@@ -70,6 +71,11 @@ class Index extends MX_Controller
     {
         $data = [];
         $data['siteTitle'] = 'Thêm mới bài viết';
+        $catWhere = [
+            'status' => 1,
+            'type' => 0
+        ];
+        $data['listCat'] = $this->catModel->getResult($catWhere);
 
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $error = [];
@@ -166,6 +172,12 @@ class Index extends MX_Controller
         $data['item'] = $item;
         $data['id'] = $id;
 
+        $catWhere = [
+            'status' => 1,
+            'type' => 0
+        ];
+        $data['listCat'] = $this->catModel->getResult($catWhere);
+
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $error = [];
             $title = $this->input->post('title');
@@ -175,10 +187,11 @@ class Index extends MX_Controller
             $keywords = $this->input->post('keywords');
             $tags = $this->input->post('tags');
             $category = $this->input->post('category');
+            $status = $this->input->post('status');
 
             $flashData = [
                 'slugs' => $slugs,
-//                'status' => $status,
+                'status' => $status,
                 'category' => $category,
                 'title' => $title,
                 'desc' => $desc,
@@ -225,7 +238,7 @@ class Index extends MX_Controller
 
                     $postData = [
                         'slugs' => $slugs,
-//                    'status' => $status,
+                        'status' => $status,
                         'category' => $category,
                         'title' => $title,
                         'desc' => $desc,
@@ -238,6 +251,9 @@ class Index extends MX_Controller
                         'date_create' => time()
                     ];
                     $this->postModel->update($id, $postData);
+                    $this->session->set_flashdata('edit', $item->id);
+                    redirect('managerPost/index/index?action=manager');
+
                 } else {
                     $this->session->set_flashdata('error', $error);
                 }

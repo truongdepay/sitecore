@@ -42,18 +42,23 @@ if ($this->session->userdata('error')) {
 </div>
 <div class="form-group">
     <label for="category">Danh mục</label>
-    <select class="form-control" id="category">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+    <select class="form-control" id="category" name="category">
+        <?php foreach ($listCat as $value) { ?>
+            <option value="<?= $value->id; ?>"><?= $value->title; ?></option>
+        <?php } ?>
     </select>
 </div>
 <div class="form-group">
     <label for="thumb">Ảnh</label>
     <input type="file" class="" name="thumb" id="thumb" onchange="previewFile()">
     <img src="<?= base_url($item->thumb); ?>" alt="" class="" id="thumb-preview" width="100px">
+</div>
+<div class="form-group">
+    <label for="status">Danh mục</label>
+    <select class="form-control" id="status" name="status">
+        <option value="0">Lưu nháp</option>
+        <option value="1">Công khai</option>
+    </select>
 </div>
 <input type="submit" name="save" id="save" class="btn btn-primary" value="Lưu">
 <?= form_close(); ?>

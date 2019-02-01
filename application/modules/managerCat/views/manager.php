@@ -27,8 +27,8 @@ if ($this->session->userdata('success')) {
                     ...
                 </div>
                 <div class="modal-footer">
-                    <button onclick="window.open('<?= site_url('managerProduct/index/index?action=create'); ?>', '_parent')" type="button" class="btn btn-secondary" data-dismiss="modal">Tiếp</button>
-                    <button onclick="window.open('<?= site_url('managerProduct/index/index?action=manager'); ?>', '_parent')" type="button" class="btn btn-primary">Thôi khỏi</button>
+                    <button onclick="window.open('<?= site_url('managerCat/index/index?action=create'); ?>', '_parent')" type="button" class="btn btn-secondary" data-dismiss="modal">Tiếp</button>
+                    <button onclick="window.open('<?= site_url('managerCat/index/index?action=manager'); ?>', '_parent')" type="button" class="btn btn-primary">Thôi khỏi</button>
                 </div>
             </div>
         </div>
