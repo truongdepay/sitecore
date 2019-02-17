@@ -37,6 +37,7 @@ class postModel extends Base_models
     {
         $this->db->select('
             posts.id as id,
+            posts.category as category,
             posts.title as title,
             posts.status as status,
             posts.slugs as slugs,
