@@ -16,7 +16,10 @@ class Home extends MX_Controller
         $this->load->helper([
             'url',
         ]);
-
+        $this->load->library([
+            'users'
+        ]);
+        $this->users->redirectLogin();
         $this->load->config('config_template');
         $this->view = 'home';
     }
