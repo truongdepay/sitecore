@@ -19,8 +19,10 @@ class Index extends MX_Controller
         ]);
 
         $this->load->library([
-            'session'
+            'session',
+            'users'
         ]);
+        $this->users->redirectLogin();
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
         $this->load->model('catModel');
