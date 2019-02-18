@@ -40,3 +40,12 @@ $(document).ready(function(){
         });
     });
 });
+
+function autoSelect(valDefault, tag) {
+    $(tag).each(function () {
+        var value = $(this).val();
+        if (valDefault == value) {
+            $(this).prop('selected', true);
+        }
+    });
+}

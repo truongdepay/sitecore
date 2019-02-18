@@ -47,6 +47,7 @@ if ($this->session->userdata('error')) {
             <option value="<?= $value->id; ?>"><?= $value->title; ?></option>
         <?php } ?>
     </select>
+
 </div>
 <div class="form-group">
     <label for="thumb">Ảnh</label>
@@ -55,7 +56,7 @@ if ($this->session->userdata('error')) {
 </div>
 <div class="form-group">
     <label for="status">Danh mục</label>
-    <select class="form-control" id="status" name="status">
+    <select class="form-control" id="status" name="status" data-status="<?= $item->status; ?>">
         <option value="0">Lưu nháp</option>
         <option value="1">Công khai</option>
     </select>
@@ -78,4 +79,8 @@ if ($this->session->userdata('error')) {
             preview.src = "";
         }
     }
+
+    autoSelect(<?= $item->category; ?>, '#category option');
+    autoSelect(<?= $item->status; ?>, '#status option');
+
 </script>
