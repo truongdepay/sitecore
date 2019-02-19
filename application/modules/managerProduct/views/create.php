@@ -47,11 +47,9 @@ if ($this->session->userdata('error')) {
 <div class="form-group">
     <label for="category">Danh mục</label>
     <select class="form-control" id="category" name="category">
-        <option value="1">1</option>
-        <option value="1">2</option>
-        <option value="1">3</option>
-        <option value="1">4</option>
-        <option value="1">5</option>
+        <?php foreach ($listCat as $value) { ?>
+            <option value="<?= $value->id; ?>"><?= $value->title; ?></option>
+        <?php } ?>
     </select>
 </div>
 <div class="form-group">

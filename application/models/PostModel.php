@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Time: 2:08 AM
  */
 require_once APPPATH . "models/Base/BaseModel.php";
-class PostModel extends BaseModel
+class Post_model extends BaseModel
 {
     public function __construct()
     {

@@ -86,3 +86,29 @@ if (!function_exists('passwordCheck')) {
         }
     }
 }
+
+if (!function_exists('priceCheck')) {
+    function priceCheck($price)
+    {
+        if (empty($price)) {
+            return true;
+        }else {
+            if (is_numeric($price)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    }
+}
+
+if (!function_exists('checkNull')) {
+    function checkNull($content)
+    {
+        if (empty($content)) {
+            return false;
+        }
+        return true;
+    }
+}

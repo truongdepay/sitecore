@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if(ENVIRONMENT === 'production')
 {
-	$config['base_url'] = '';
+	$config['base_url'] = 'https://vegitozenn.cf';
 } else {
 	$config['base_url'] = 'http://demo.io';
 }
@@ -465,7 +465,8 @@ $config['csrf_exclude_uris'] = array(
     'ApiPosts/createControllers/create',
     'managerProduct/index/createSlug',
     'managerPost/index/createSlug',
-    'managerCat/index/createSlug'
+    'managerCat/index/createSlug',
+    'managerCat/index/changeTypeCat'
 );
 
 /*

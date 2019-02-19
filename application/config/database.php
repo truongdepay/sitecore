@@ -75,12 +75,12 @@ $query_builder = TRUE;
 if (ENVIRONMENT === 'production') {
     $db['default'] = array(
         'dsn'	=> '',
-        'hostname' => '',
-        'username' => '',
-        'password' => '',
-        'database' => '',
+        'hostname' => 'localhost',
+        'username' => 'hvnedtnshosting_develop',
+        'password' => '[}S;c)PdlE6L',
+        'database' => 'hvnedtnshosting_develop',
         'dbdriver' => 'mysqli',
-        'dbprefix' => '',
+        'dbprefix' => 'v1_',
         'pconnect' => FALSE,
         'db_debug' => (ENVIRONMENT !== 'production'),
         'cache_on' => FALSE,

@@ -26,8 +26,8 @@ class Index extends MX_Controller
         $this->users->redirectLogin();
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
-        $this->load->model('postModel');
-        $this->load->model('catModel');
+        $this->load->model('Post_model');
+        $this->load->model('Cat_model');
         $this->load->config('config_upload');
         $this->configImg = config_item('img');
     }
@@ -62,7 +62,7 @@ class Index extends MX_Controller
         $data = [];
         $data['siteTitle'] = 'Quản lý bài viết';
 
-        $result = $this->postModel->getResult();
+        $result = $this->Post_model->getResult();
         $data['result'] = $result;
 
         $template = 'manager';
@@ -77,7 +77,7 @@ class Index extends MX_Controller
             'status' => 1,
             'type' => 0
         ];
-        $data['listCat'] = $this->catModel->getResult($catWhere);
+        $data['listCat'] = $this->Cat_model->getResult($catWhere);
 
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $error = [];
@@ -117,7 +117,7 @@ class Index extends MX_Controller
                 $error['slugs'] = $this->noError['slugs'];
             }
 
-            $checkExistSlugs = $this->postModel->checkExist('slugs', $slugs);
+            $checkExistSlugs = $this->Post_model->checkExist('slugs', $slugs);
             if ($checkExistSlugs != 0) {
                 $error['dupSlugs'] = $this->noError['dupSlugs'];
             }
@@ -150,7 +150,7 @@ class Index extends MX_Controller
                         'tags' => $tags,
                         'date_create' => time()
                     ];
-                    $this->postModel->add($postData);
+                    $this->Post_model->add($postData);
                     $this->session->set_flashdata('success', true);
                     redirect('managerPost/index/index?action=manager');
                 } else {
@@ -170,7 +170,7 @@ class Index extends MX_Controller
         $data = [];
         $data['siteTitle'] = 'Sửa bài viết';
         $id = $this->input->get('id');
-        $item = $this->postModel->getInfo($id);
+        $item = $this->Post_model->getInfo($id);
         $data['item'] = $item;
         $data['id'] = $id;
 
@@ -178,7 +178,7 @@ class Index extends MX_Controller
             'status' => 1,
             'type' => 0
         ];
-        $data['listCat'] = $this->catModel->getResult($catWhere);
+        $data['listCat'] = $this->Cat_model->getResult($catWhere);
 
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $error = [];
@@ -218,7 +218,7 @@ class Index extends MX_Controller
                 $error['slugs'] = $this->noError['slugs'];
             }
 
-            $checkExistSlugs = $this->postModel->checkExist('slugs', $slugs, $id);
+            $checkExistSlugs = $this->Post_model->checkExist('slugs', $slugs, $id);
             if ($checkExistSlugs != 0) {
                 $error['dupSlugs'] = $this->noError['dupSlugs'];
             }
@@ -252,7 +252,7 @@ class Index extends MX_Controller
                         'tags' => $tags,
                         'date_create' => time()
                     ];
-                    $this->postModel->update($id, $postData);
+                    $this->Post_model->update($id, $postData);
                     $this->session->set_flashdata('edit', $item->id);
                     redirect('managerPost/index/index?action=manager');
 
@@ -271,7 +271,7 @@ class Index extends MX_Controller
     private function delete()
     {
         $id = $this->input->get('id');
-        $this->postModel->delete($id);
+        $this->Post_model->delete($id);
         redirect('managerPost/index/index');
     }
 
@@ -295,9 +295,9 @@ class Index extends MX_Controller
             $slugs = $this->slugs->create($title);
 
             if ($action == 'edit') {
-                $check = $this->postModel->checkExist('slugs', $slugs, $id);
+                $check = $this->Post_model->checkExist('slugs', $slugs, $id);
             } else {
-                $check = $this->postModel->checkExist('slugs', $slugs);
+                $check = $this->Post_model->checkExist('slugs', $slugs);
             }
 
             if ($check != 0) {
