@@ -79,4 +79,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             preview.src = "";
         }
     }
+    autoSelect(<?= $item->category; ?>, '#category option');
+    autoSelect(<?= $item->category; ?>, '#status option');
 </script>

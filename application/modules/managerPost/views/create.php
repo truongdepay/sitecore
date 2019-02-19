@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="form-group">
     <label for="category">Danh mục</label>
-    <select class="form-control" id="category">
+    <select class="form-control" id="category" name="category">
         <?php foreach ($listCat as $value) { ?>
             <option value="<?= $value->id; ?>"><?= $value->title; ?></option>
         <?php } ?>

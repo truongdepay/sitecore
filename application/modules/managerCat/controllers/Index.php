@@ -25,7 +25,7 @@ class Index extends MX_Controller
         $this->users->redirectLogin();
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
-        $this->load->model('catModel');
+        $this->load->model('Cat_model');
     }
 
     public function index()
@@ -58,7 +58,7 @@ class Index extends MX_Controller
         $data = [];
         $data['siteTitle'] = 'Quản lý danh mục';
 
-        $result = $this->catModel->getResult();
+        $result = $this->Cat_model->getResult();
         $data['result'] = $result;
 
         $template = 'manager';
@@ -69,7 +69,7 @@ class Index extends MX_Controller
     {
         $data = [];
         $data['siteTitle'] = 'Thêm mới danh mục';
-        $listCat = $this->catModel->getResult(['status' => 1], 10, 0);
+        $listCat = $this->Cat_model->getResult(['status' => 1], 10, 0);
         $data['listCat'] = $listCat;
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $error = [];
@@ -96,7 +96,7 @@ class Index extends MX_Controller
                 $error['slugs'] = $this->noError['slugs'];
             }
 
-            $checkExistSlugs = $this->catModel->checkExist('slugs', $slugs);
+            $checkExistSlugs = $this->Cat_model->checkExist('slugs', $slugs);
             if ($checkExistSlugs != 0) {
                 $error['dupSlugs'] = $this->noError['dupSlugs'];
             }
@@ -110,7 +110,7 @@ class Index extends MX_Controller
                     'type' => $type,
                     'date_create' => time()
                 ];
-                $this->catModel->add($catData);
+                $this->Cat_model->add($catData);
                 $this->session->set_flashdata('success', true);
                 redirect('managerCat/index/index?action=manager');
             } else {
@@ -127,7 +127,7 @@ class Index extends MX_Controller
         $data = [];
         $data['siteTitle'] = 'Sửa danh mục';
         $id = $this->input->get('id');
-        $item = $this->catModel->getInfo($id);
+        $item = $this->Cat_model->getInfo($id);
         $data['item'] = $item;
         $data['id'] = $id;
 
@@ -156,7 +156,7 @@ class Index extends MX_Controller
                 $error['slugs'] = $this->noError['slugs'];
             }
 
-            $checkExistSlugs = $this->catModel->checkExist('slugs', $slugs, $id);
+            $checkExistSlugs = $this->Cat_model->checkExist('slugs', $slugs, $id);
             if ($checkExistSlugs != 0) {
                 $error['dupSlugs'] = $this->noError['dupSlugs'];
             }
@@ -170,7 +170,7 @@ class Index extends MX_Controller
                     'type' => $type,
                     'date_create' => time()
                 ];
-                $this->catModel->update($id, $catData);
+                $this->Cat_model->update($id, $catData);
                 $this->session->set_flashdata('success', true);
                 redirect('managerCat/index/index?action=manager');
             } else {
@@ -203,9 +203,9 @@ class Index extends MX_Controller
             $slugs = $this->slugs->create($title);
 
             if ($action == 'edit') {
-                $check = $this->catModel->checkExist('slugs', $slugs, $id);
+                $check = $this->Cat_model->checkExist('slugs', $slugs, $id);
             } else {
-                $check = $this->catModel->checkExist('slugs', $slugs);
+                $check = $this->Cat_model->checkExist('slugs', $slugs);
             }
 
             if ($check != 0) {
@@ -221,6 +221,11 @@ class Index extends MX_Controller
                     'notify' => $notify
                 ]));
         }
+    }
+
+    public function changeTypeCat()
+    {
+
     }
 
 }

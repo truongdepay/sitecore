@@ -27,7 +27,8 @@ class Index extends MX_Controller
         $this->users->redirectLogin();
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
-        $this->load->model('productModel');
+        $this->load->model('Product_model');
+        $this->load->model('Cat_model');
         $this->load->config('config_upload');
         $this->configImg = config_item('img');
     }
@@ -61,7 +62,7 @@ class Index extends MX_Controller
     {
         $data = [];
 
-        $result = $this->productModel->getResult();
+        $result = $this->Product_model->getResult();
         $data['result'] = $result;
         $data['siteTitle'] = 'Quản lý sản phẩm';
         $template = 'manager';
@@ -72,7 +73,11 @@ class Index extends MX_Controller
     {
         $data = [];
         $data['siteTitle'] = 'Thêm mới sản phẩm';
-
+        $catWhere = [
+            'status' => 1,
+            'type' => 1
+        ];
+        $data['listCat'] = $this->Cat_model->getResult($catWhere);
         $error = [];
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
 
@@ -115,7 +120,7 @@ class Index extends MX_Controller
                 $error['slugs'] = $this->noError['slugs'];
             }
 
-            $checkExistSlugs = $this->productModel->checkExist('slugs', $slugs);
+            $checkExistSlugs = $this->Product_model->checkExist('slugs', $slugs);
             if ($checkExistSlugs != 0) {
                 $error['dupSlugs'] = $this->noError['dupSlugs'];
             }
@@ -150,7 +155,7 @@ class Index extends MX_Controller
                         'date_create' => time(),
                         'price' => $price
                     ];
-                    $this->productModel->add($postData);
+                    $this->Product_model->add($postData);
                     $this->session->set_flashdata('success', true);
                     redirect('managerProduct/index/index?action=manager');
                 } else {
@@ -170,7 +175,7 @@ class Index extends MX_Controller
         $data['siteTitle'] = 'Sửa bài viết';
 
         $id = $this->input->get('id');
-        $item = $this->productModel->getInfo($id);
+        $item = $this->Product_model->getInfo($id);
         $data['item'] = $item;
         $data['id'] = $id;
 
@@ -211,7 +216,7 @@ class Index extends MX_Controller
                 $error['slugs'] = $this->noError['slugs'];
             }
 
-            $checkExistSlugs = $this->productModel->checkExist('slugs', $slugs, $id);
+            $checkExistSlugs = $this->Product_model->checkExist('slugs', $slugs, $id);
             if ($checkExistSlugs != 0) {
                 $error['dupSlugs'] = $this->noError['dupSlugs'];
             }
@@ -245,7 +250,7 @@ class Index extends MX_Controller
                         'tags' => $tags,
                         'date_create' => time()
                     ];
-                    $this->productModel->update($id, $postData);
+                    $this->Product_model->update($id, $postData);
                 } else {
                     $this->session->set_flashdata('error', $error);
                 }
@@ -290,9 +295,9 @@ class Index extends MX_Controller
             $slugs = $this->slugs->create($title);
 
             if ($action == 'edit') {
-                $check = $this->productModel->checkExist('slugs', $slugs, $id);
+                $check = $this->Product_model->checkExist('slugs', $slugs, $id);
             } else {
-                $check = $this->productModel->checkExist('slugs', $slugs);
+                $check = $this->Product_model->checkExist('slugs', $slugs);
             }
 
             if ($check != 0) {

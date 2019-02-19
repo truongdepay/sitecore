@@ -8,7 +8,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'models/Base_models.php';
-class catModel extends Base_models
+class Cat_model extends Base_models
 {
     public function __construct()
     {

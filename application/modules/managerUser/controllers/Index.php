@@ -21,7 +21,7 @@ class Index extends MX_Controller
             'session',
             'users'
         ]);
-        $this->load->model('userModel');
+        $this->load->model('User_model');
         $this->load->config('config_notification');
         $this->noError = config_item('notifyError');
     }
@@ -78,7 +78,7 @@ class Index extends MX_Controller
             $passwordCf = $this->input->post('password_cf');
             $token = $this->input->post('token');
 
-            $checkUsername = $this->userModel->checkExist('username', $username);
+            $checkUsername = $this->User_model->checkExist('username', $username);
 
             if ($checkUsername > 0) {
                 $error['dupUsername'] = $this->noError['dupUsername'];
@@ -118,7 +118,7 @@ class Index extends MX_Controller
                     'date_create' => time()
                 ];
 
-                $this->userModel->add($dataUser);
+                $this->User_model->add($dataUser);
                 site_url('');
             } else {
                 $flashData = [
@@ -143,9 +143,9 @@ class Index extends MX_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $checkUser = $this->userModel->checkExist('username', $username);
+            $checkUser = $this->User_model->checkExist('username', $username);
             if ($checkUser > 0) {
-                $infoUser = $this->userModel->getInfo('username', $username);
+                $infoUser = $this->User_model->getInfo('username', $username);
                 $password = $password . $infoUser->salt;
                 $checkPass = password_verify($password, $infoUser->password);
 

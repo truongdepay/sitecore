@@ -25,7 +25,7 @@ if ($this->session->userdata('error')) {
 </div>
 <div class="form-group">
     <label for="type">Kiểu</label>
-    <select class="form-control" id="type" name="type">
+    <select class="form-control" id="type" name="type" onchange="selectCategory(this);">
         <option value="0">Post</option>
         <option value="1">Product</option>
     </select>
@@ -52,3 +52,18 @@ if ($this->session->userdata('error')) {
 </div>
 <input type="submit" name="save" id="save" class="btn btn-primary" value="Lưu">
 <?= form_close(); ?>
+<script>
+    function selectCategory(elm) {
+        var type = $(elm).val();
+        var url = 'managerCat/index/changeTypeCat';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {type: type},
+            dataType: 'json',
+            success: function(result) {
+
+            }
+        });
+    }
+</script>

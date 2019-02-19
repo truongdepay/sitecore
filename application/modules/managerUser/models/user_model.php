@@ -7,33 +7,27 @@
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class catModel extends Base_models
+require APPPATH . 'models/Base_models.php';
+class User_model extends Base_models
 {
     public function __construct()
     {
         parent::__construct();
         $this->db = $this->load->database('default', TRUE, TRUE);
-        $this->tableName = 'category';
+        $this->tableName = 'user';
         $this->id = 'id';
-        $this->slugs = 'slugs';
         $this->status = 'status';
-        $this->category = 'category';
-        $this->title = 'title';
-        $this->desc = 'desc';
-        $this->content = 'content';
-        $this->thumb = 'thumb';
-        $this->type = 'type';
-        $this->order = 'order';
-        $this->keywords = 'keywords';
-        $this->tags = 'tags';
-        $this->author = 'author';
+        $this->fullname = 'fullname';
+        $this->username = 'username';
+        $this->password = 'password';
+        $this->salt = 'salt';
+        $this->birthday = 'birthday';
+        $this->description = 'description';
         $this->dateCreate = 'date_create';
         $this->dateModify = 'date_modify';
-        $this->authorModify = 'author_modify';
     }
 
-    public function getResult($where = [], $limit = null, $start = 0, $orderField = 'id', $order = 'DESC')
+    public function getResult($where = [], $limit = 10, $start = 0, $orderField = 'id', $order = 'DESC')
     {
         $this->db->select('
             *
@@ -46,19 +40,17 @@ class catModel extends Base_models
             }
         }
 
-        if ($limit != null) {
-            $this->db->limit($limit, $start);
-        }
-
+        $this->db->limit($limit, $start);
         $this->db->order_by($this->tableName . '.' . $orderField, $order);
         return $this->db->get()->result();
     }
 
-    public function getInfo($id)
+    public function getInfo($field, $value)
     {
         $this->db->select('*');
         $this->db->from($this->tableName);
-        $this->db->where($this->tableName . '.' . $this->id, $id);
+        $this->db->where($this->tableName . '.' . $field, $value);
         return $this->db->get()->row();
     }
+
 }

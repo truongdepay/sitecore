@@ -9,7 +9,7 @@
 /**
  * 
  */
-class Merge_cat_models extends CI_Model
+class Merge_Cat_models extends CI_Model
 {
 	
 	public function __construct()
