@@ -99,6 +99,11 @@ class Index extends MX_Controller
         $this->load->view($template, $data);
     }
 
+    public function search()
+    {
+
+    }
+
     private function loadView($template, $data)
     {
         $this->load->config('config_template');

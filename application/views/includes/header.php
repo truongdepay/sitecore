@@ -48,6 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a href="<?= site_url('managerCat/index/index?action=index'); ?>" class="list-group-item list-group-item-action rounded-0">Quản lý Danh mục</a>
                     <a href="<?= site_url('managerCat/index/index?action=create'); ?>" class="list-group-item list-group-item-action">Thêm mới danh mục</a>
                 </div>
+                <div class="list-group mt-2">
+                    <a href="<?= site_url('managerMoney/index/index?action=create'); ?>" class="list-group-item list-group-item-action rounded-0">Money</a>
+                </div>
             </div>
             <div class="content">
                 <div class="row">
