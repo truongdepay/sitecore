@@ -20,6 +20,10 @@
     </div>
 </div>
 
+<div id="resultSearch" class="bg-light">
+
+</div>
+
 <h3 class="mt-5">Mới thêm gần đây nhất</h3>
 <table class="table mt-1">
     <thead>
@@ -67,7 +71,31 @@
             data: {fromDate: fromDate, toDate: toDate},
             dataType: 'json',
             success: function (result) {
-                
+                var html = '';
+                if (result.result == 1) {
+                    $.each(result.content, function (key, item) {
+                        html += `
+                    <tr>
+                        <td>${item.id}</td>
+                        <td>${item.content}</td>
+                        <td>${item.money}</td>
+                        <td>${item.date}</td>
+                    </tr>
+                    `;
+                    });
+                    html = `
+                        <h4 class="mt-5">Kết quả tra cứu từ <span class="text-danger">${result.fromDate}</span> tới <span class="text-danger">${result.toDate}</span></h4>
+                        <table class="table mt-1">
+                        ${html}
+                        <tr>
+                        <th colspan="4">Tổng: ${result['content'][0].total}</th>
+                        </tr>
+                        </table>`;
+                } else {
+                    html += `<h5 class="text-warning">Không tìm thấy kết quả!<h5>`;
+                }
+
+                $("#resultSearch").html(html);
             }
         });
     }
