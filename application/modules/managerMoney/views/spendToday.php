@@ -59,5 +59,16 @@
     function search() {
         var fromDate = $("#fromDate").val();
         var toDate = $("#toDate").val();
+
+        var url = window.location.origin + '/managerMoney/index/search';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: {fromDate: fromDate, toDate: toDate},
+            dataType: 'json',
+            success: function (result) {
+                
+            }
+        });
     }
 </script>

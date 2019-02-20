@@ -466,7 +466,8 @@ $config['csrf_exclude_uris'] = array(
     'managerProduct/index/createSlug',
     'managerPost/index/createSlug',
     'managerCat/index/createSlug',
-    'managerCat/index/changeTypeCat'
+    'managerCat/index/changeTypeCat',
+    'managerMoney/index/search'
 );
 
 /*

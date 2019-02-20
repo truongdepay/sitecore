@@ -18,6 +18,10 @@ class Index extends MX_Controller
             'validate'
         ]);
 
+        $this->load->library([
+            'output'
+        ]);
+
         $this->load->model('Money_model');
     }
 
@@ -101,6 +105,20 @@ class Index extends MX_Controller
 
     public function search()
     {
+        $fromDate = $this->input->post('fromDate');
+        $toDate = $this->input->post('toDate');
+
+        $response = [
+            'fromDate' => $fromDate,
+            'toDate' => $toDate
+        ];
+
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json', 'utf-8')
+            ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+            ->_display();
+        exit;
 
     }
 
