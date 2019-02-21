@@ -19,6 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/fontawesome/css/all.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles.css')?>">
     <script src="<?= base_url('assets/js/jquery-3.3.1.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugin/ckeditor/ckeditor.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugin/ckfinder/ckfinder.js'); ?>"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="<?= base_url('assets/js/bootstrap.js'); ?>"></script>

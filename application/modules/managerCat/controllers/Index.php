@@ -130,6 +130,11 @@ class Index extends MX_Controller
         $item = $this->Cat_model->getInfo($id);
         $data['item'] = $item;
         $data['id'] = $id;
+        $where = [
+            'type' => $item->type,
+            'id !=' => $item->id
+        ];
+        $data['listCat'] = $this->Cat_model->getResult($where);
 
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $error = [];
@@ -225,7 +230,33 @@ class Index extends MX_Controller
 
     public function changeTypeCat()
     {
+        $type = $this->input->post('type');
+        $id = $this->input->get('id');
+        if ($type != '') {
+            $where = [
+                'type' => $type,
+                'id !=' => $id
+            ];
+            $list = $this->Cat_model->getResult($where);
 
+            $response = [
+                'result' => 1,
+                'list' => $list
+            ];
+        } else {
+            $response = [
+                'result' => 0,
+                'list' => null
+            ];
+        }
+
+
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json', 'utf-8')
+            ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+            ->_display();
+        exit;
     }
 
 }

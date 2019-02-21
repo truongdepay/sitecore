@@ -83,4 +83,5 @@ if ($this->session->userdata('error')) {
             preview.src = "";
         }
     }
+    CKEDITOR.replace( 'content' );
 </script>
