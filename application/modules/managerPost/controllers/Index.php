@@ -21,7 +21,8 @@ class Index extends MX_Controller
         ]);
         $this->load->library([
             'session',
-            'users'
+            'users',
+            'monolog'
         ]);
         $this->users->redirectLogin();
         $this->load->config('config_notification');
@@ -71,6 +72,7 @@ class Index extends MX_Controller
 
     private function create()
     {
+        $this->monolog->creatMonolog($_COOKIE, 'post_create/debug');
         $data = [];
         $data['siteTitle'] = 'Thêm mới bài viết';
         $catWhere = [

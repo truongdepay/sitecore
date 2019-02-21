@@ -178,7 +178,11 @@ class Index extends MX_Controller
         $item = $this->Product_model->getInfo($id);
         $data['item'] = $item;
         $data['id'] = $id;
-
+        $catWhere = [
+            'status' => 1,
+            'type' => 1
+        ];
+        $data['listCat'] = $this->Cat_model->getResult($catWhere);
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $error = [];
             $title = $this->input->post('title');
@@ -188,10 +192,11 @@ class Index extends MX_Controller
             $keywords = $this->input->post('keywords');
             $tags = $this->input->post('tags');
             $category = $this->input->post('category');
+            $status = $this->input->post('status');
 
             $flashData = [
                 'slugs' => $slugs,
-//                'status' => $status,
+                'status' => $status,
                 'category' => $category,
                 'title' => $title,
                 'desc' => $desc,
@@ -238,7 +243,7 @@ class Index extends MX_Controller
 
                     $postData = [
                         'slugs' => $slugs,
-//                    'status' => $status,
+                        'status' => $status,
                         'category' => $category,
                         'title' => $title,
                         'desc' => $desc,
@@ -251,6 +256,7 @@ class Index extends MX_Controller
                         'date_create' => time()
                     ];
                     $this->Product_model->update($id, $postData);
+                    redirect('managerProduct/index/index?action=index');
                 } else {
                     $this->session->set_flashdata('error', $error);
                 }

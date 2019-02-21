@@ -78,4 +78,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             preview.src = "";
         }
     }
+    var editor = CKEDITOR.replace( 'content' );
+    CKFinder.setupCKEditor(editor);
 </script>

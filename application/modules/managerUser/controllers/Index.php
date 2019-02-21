@@ -48,6 +48,9 @@ class Index extends MX_Controller
             case 'logout':
                 $this->logout();
                 break;
+            case 'ckfinder':
+                $this->ckfinder();
+                break;
             default:
                 $this->manager();
                 break;
@@ -181,6 +184,21 @@ class Index extends MX_Controller
             $this->session->set_userdata('login', $sessionData);
             redirect('managerUser/index/index?action=login');
         }
+    }
+
+    private function ckfinder()
+    {
+        $check = $this->users->checkLogin();
+        $response = [
+            'result' => $check
+        ];
+
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json', 'utf-8')
+            ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+            ->_display();
+        exit;
     }
 
     private function loadView($template, $data)

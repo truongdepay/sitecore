@@ -23,15 +23,15 @@ class Monolog
         $this->monolog = config_item('logs');
     }
 
-    public function creatMonolog($module = '', $info = '')
+    public function creatMonolog($info = '', $fileName, $debug = true)
     {
         // Create the logger
-        $logger = new Logger($this->monolog[$module]['name']);
+        $logger = new Logger('Debug');
         // Now add some handlers
-        $logger->pushHandler(new StreamHandler($this->monolog[$module]['path'], Logger::DEBUG));
+        $logger->pushHandler(new StreamHandler(APPPATH . '/logs-data/' . $fileName . '_' . date('Y_m_d', time()) . '.log' , Logger::DEBUG));
         $logger->pushHandler(new FirePHPHandler());
-        if ($this->monolog[$module]['debug'] === true) {
-            $logger->info($info);
+        if ($debug === true) {
+            $logger->info(json_encode($info));
         }
     }
 }

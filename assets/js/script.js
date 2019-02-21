@@ -41,11 +41,39 @@ $(document).ready(function(){
     });
 });
 
+//Tự động chọn theo các trạng thái cũ khi sửa
 function autoSelect(valDefault, tag) {
     $(tag).each(function () {
         var value = $(this).val();
         if (valDefault == value) {
             $(this).prop('selected', true);
+        }
+    });
+}
+
+//Load danh mục khi tạo mới danh mục
+function selectCategory(elm) {
+    var type = $(elm).val();
+    var uri = $(elm).attr('uri');
+    var url = window.location.origin + uri;
+    $.ajax({
+        url: url,
+        type: 'post',
+        data: {type: type},
+        dataType: 'json',
+        success: function(result) {
+            var html = `<option value="">Mặc định là cha</option>`;
+            var list = '';
+            if (result.result == 1) {
+                $.each(result.list, function (key, value) {
+                    list += `<option value="${value.id}">${value.title}</option>`;
+                });
+                html += list;
+            } else {
+                html += '';
+            }
+            console.log(html);
+            $("select[name=parent]").html(html);
         }
     });
 }
