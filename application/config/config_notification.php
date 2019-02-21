@@ -25,5 +25,7 @@ $config['notifyError'] = [
 $config['notifyCommon'] = [
     'add' => 'Thêm thành công',
     'edit' => 'Sửa thành công',
-    'delete' => 'Xóa thành công'
+    'delete' => 'Xóa thành công',
+    'notNull' => 'Không được để trống',
+    'fromTo' => 'Ngày trước phải nhỏ hơn ngày sau'
 ];

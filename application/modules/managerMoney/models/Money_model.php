@@ -46,4 +46,13 @@ class Money_model extends Base_models
         return $this->db->get()->row();
     }
 
+    public function getByDate($fromDate, $toDate)
+    {
+        $this->db->select('*');
+        $this->db->from($this->tableName);
+        $this->db->where($this->tableName . '.' . $this->date . '>=', $fromDate);
+        $this->db->where($this->tableName . '.' . $this->date . '<=', $toDate);
+        return $this->db->get()->result();
+    }
+
 }

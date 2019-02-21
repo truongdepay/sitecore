@@ -19,10 +19,13 @@ class Index extends MX_Controller
         ]);
 
         $this->load->library([
-            'output'
+            'output',
+            'users'
         ]);
-
+        $this->users->redirectLogin();
         $this->load->model('Money_model');
+        $this->load->config('config_notification');
+        $this->noCommon = config_item('notifyCommon');
     }
 
     public function index()
@@ -107,11 +110,54 @@ class Index extends MX_Controller
     {
         $fromDate = $this->input->post('fromDate');
         $toDate = $this->input->post('toDate');
+        $error = [];
+        $fromDate = strtotime($fromDate);
+        $toDate = strtotime($toDate);
 
-        $response = [
-            'fromDate' => $fromDate,
-            'toDate' => $toDate
-        ];
+        if (!checkNull($fromDate)) {
+            $error['fromDate'] = $this->noCommon['notNull'];
+        }
+        if (!checkNull($toDate)) {
+            $error['toDate'] = $this->noCommon['notNull'];
+        }
+
+        if ($toDate < $fromDate) {
+            $error['fromTo'] = $this->noCommon['fromTo'];
+        }
+
+        if (empty($error)) {
+            $list = $this->Money_model->getByDate($fromDate, $toDate);
+            $response = $list;
+            if (!empty($response)) {
+                $total = 0;
+                for ($i = 0; $i < count($response); $i++) {
+                    $total += $response[$i]->money;
+                    $response[$i]->date = date('Y-m-d', $response[$i]->date);
+                    $response[$i]->money = number_format($response[$i]->money);
+                }
+                for ($i = 0; $i < count($response); $i++) {
+                    $response[$i]->total = number_format($total);
+                }
+
+                $response = [
+                    'result' => 1,
+                    'fromDate' => date('Y-m-d', $fromDate),
+                    'toDate' => date('Y-m-d', $toDate),
+                    'content' => $response
+                ];
+            } else {
+                $response = [
+                    'result' => 2,
+                    'content' => null
+                ];
+            }
+
+        } else {
+            $response = [
+                'result' => 0,
+                'content' => null
+            ];
+        }
 
         $this->output
             ->set_status_header(200)
