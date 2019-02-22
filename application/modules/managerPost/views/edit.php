@@ -79,7 +79,8 @@ if ($this->session->userdata('error')) {
             preview.src = "";
         }
     }
-    CKEDITOR.replace( 'content' );
+    var editor = CKEDITOR.replace( 'content' );
+    CKFinder.setupCKEditor(editor);
     autoSelect(<?= $item->category; ?>, '#category option');
     autoSelect(<?= $item->status; ?>, '#status option');
 

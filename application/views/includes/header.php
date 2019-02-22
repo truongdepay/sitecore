@@ -27,6 +27,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?= base_url('assets/js/script.js'); ?>"></script>
 </head>
 <body>
+    <nav class="navbar navbar-dark bg-dark position-fixed" style="height: 50px; width: 100%; top:0px; z-index: 400">
+        <!-- Navbar content -->
+    </nav>
 	<div id="main">
 		<div class="container-fluid p-0">
             <div class="left-sidebar shadow">
@@ -34,23 +37,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a href="#" class="list-group-item list-group-item-action active rounded-0">
                         WELCOME!
                     </a>
-                </div>
-                <div class="list-group mt-4">
                     <a href="<?= site_url(''); ?>" class="list-group-item list-group-item-action bg-light rounded-0">Tổng quan</a>
-                </div>
-                <div class="list-group mt-2">
+
                     <a href="<?= site_url('managerPost/index/index?action=index'); ?>" class="list-group-item list-group-item-action rounded-0">Quản lý bài viết</a>
                     <a href="<?= site_url('managerPost/index/index?action=create'); ?>" class="list-group-item list-group-item-action">Thêm mới bài viết</a>
-                </div>
-                <div class="list-group mt-2">
+
                     <a href="<?= site_url('managerProduct/index/index?action=index'); ?>" class="list-group-item list-group-item-action rounded-0">Quản lý sản phẩm</a>
                     <a href="<?= site_url('managerProduct/index/index?action=create'); ?>" class="list-group-item list-group-item-action">Thêm mới sản phẩm</a>
-                </div>
-                <div class="list-group mt-2">
+
                     <a href="<?= site_url('managerCat/index/index?action=index'); ?>" class="list-group-item list-group-item-action rounded-0">Quản lý Danh mục</a>
                     <a href="<?= site_url('managerCat/index/index?action=create'); ?>" class="list-group-item list-group-item-action">Thêm mới danh mục</a>
-                </div>
-                <div class="list-group mt-2">
+
                     <a href="<?= site_url('managerMoney/index/index?action=create'); ?>" class="list-group-item list-group-item-action rounded-0">Money</a>
                 </div>
             </div>
