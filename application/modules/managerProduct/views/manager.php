@@ -63,7 +63,7 @@ if ($this->session->userdata('success')) {
                 <th><img src="<?= base_url($value->thumb); ?>" alt="" width="64px"></th>
                 <td><?= $value->title; ?></td>
                 <td><?= convertStatus($value->status); ?></td>
-                <td><?= $value->category; ?></td>
+                <td><?= $value->cat_title; ?></td>
                 <td>
                     <button onclick="window.open('<?= site_url('managerProduct/index/index?action=edit&id=' . $value->id); ?>', '_parent');" class="btn btn-default text-info"><i class="far fa-edit"></i></button>
                     <button onclick="window.open('<?= site_url('managerProduct/index/index?action=delete&id=' . $value->id); ?>', '_parent')" class="btn btn-default text-danger"><i class="far fa-trash-alt"></i></button>
