@@ -36,10 +36,22 @@ class Product_model extends Base_models
     public function getResult($where = [], $limit = 10, $start = 0, $orderField = 'id', $order = 'DESC')
     {
         $this->db->select('
-            *
+            product.id as id,
+            product.category as category,
+            product.title as title,
+            product.status as status,
+            product.slugs as slugs,
+            product.thumb as thumb,
+            product.price as price,
+            product.date_create as date_create,
+            product.date_modify as date_modify,
+            product.author as author,
+            product.author_modify as author_modify,
+            category.id as cat_id,
+            category.title as cat_title
         ');
         $this->db->from($this->tableName);
-
+        $this->db->join('category', 'category.id = ' . $this->tableName . '.' . $this->category);
         if (!empty($where)) {
             foreach ($where as $field => $value) {
                 $this->db->where($this->tableName . '.' . $field, $value);

@@ -272,9 +272,22 @@ class Index extends MX_Controller
 
     private function delete()
     {
-        $id = $this->input->get('id');
-        $this->Post_model->delete($id);
-        redirect('managerPost/index/index');
+        if (isset($_GET['group_id'])) {
+            $groupId = $this->input->get('group_id');
+            $groupId = json_decode($groupId, true);
+            if (count($groupId) > 0) {
+                $this->Post_model->deleteGroup($groupId);
+                redirect('managerPost/index/index');
+            } else {
+                redirect('managerPost/index/index');
+            }
+
+        } else {
+            $id = $this->input->get('id');
+            $this->Post_model->delete($id);
+            redirect('managerPost/index/index');
+        }
+
     }
 
     private function category()
