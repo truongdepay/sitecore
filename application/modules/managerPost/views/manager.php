@@ -58,9 +58,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ?>
 
     <div class="col-12">
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="btn-group float-right" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary" id="delete-more" onclick="deleteData();">Xóa</button>
+                </div>
+            </div>
+        </div>
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>Chọn</th>
                 <th scope="col">ID</th>
                 <th></th>
                 <th scope="col">Tiêu đề</th>
@@ -72,6 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tbody>
             <?php foreach ($result as $key => $value) { ?>
                 <tr>
+                    <td><input type="checkbox" value="<?= $value->id; ?>" onclick="selectRow(this);"></td>
                     <th scope="row"><?= $value->id; ?></th>
                     <th><img src="<?= base_url($value->thumb); ?>" alt="" width="64px"></th>
                     <td><?= $value->title; ?></td>
@@ -131,3 +140,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </table>
     </div>
 </div>
+<input type="hidden" id="select-row" value="{}">
+<script>
+    function selectRow(elm)
+    {
+        var id = $(elm).val();
+        var check = $(elm).prop("checked");
+        var valSelect = $("#select-row").val();
+        valSelect = JSON.parse(valSelect);
+
+        if (check) {
+            valSelect[id] = id;
+            console.log(valSelect);
+
+        } else {
+            delete valSelect[id];
+        }
+        valSelect = JSON.stringify(valSelect);
+        $("#select-row").val(valSelect);
+    }
+
+    function deleteData() {
+        var dataSelect = $("#select-row").val();
+        var url = window.location.origin + '/managerPost/index?action=delete&group_id=' + dataSelect;
+        var confirm = window.confirm("Xác nhận xóa");
+        if (confirm == true) {
+            window.open(url, '_self');
+        }
+    }
+</script>

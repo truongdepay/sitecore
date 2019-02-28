@@ -41,6 +41,13 @@ class Base_models extends CI_Model
         return $this->db->affected_rows();
     }
 
+    public function deleteGroup($data)
+    {
+        $this->db->where_in('id', $data);
+        $this->db->delete($this->tableName);
+        return $this->db->affected_rows();
+    }
+
     /**
      * @param $field
      * @param $value
