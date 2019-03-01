@@ -38,4 +38,18 @@ class crawler
         return $response;
 
     }
+
+    public function getResult($url = '')
+    {
+        $this->html->load_file($url);
+        $response = [];
+        for ($i = 1; $i <= 40; $i = $i + 2) {
+            $row = $this->html->find('tbody.tableBodyContainer tr', $i);
+            foreach ($row->find('td') as $value) {
+                $response[$i][] = $value->innertext;
+            }
+        }
+
+        return $response;
+    }
 }
