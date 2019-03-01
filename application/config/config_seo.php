@@ -7,6 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Last Modified time: 2018-05-10 21:46:26
  */
 $config['seo_config'] = array(
-    'facebook',
+    'FacebookSdk',
     'twitter'
 );
