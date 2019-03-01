@@ -47,3 +47,4 @@
 [2019-02-21 17:34:27] my_logger.INFO: [] [] []
 [2019-02-21 17:34:37] my_logger.INFO: [] [] []
 [2019-02-21 17:35:00] my_logger.INFO: {"check":true} [] []
+[2019-02-21 18:27:55] my_logger.INFO: {"check":true} [] []
