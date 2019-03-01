@@ -85,7 +85,7 @@ $logger = new Logger('my_logger');
 // Now add some handlers
 $logger->pushHandler(new StreamHandler(__DIR__.'/debug.log', Logger::DEBUG));
 $logger->pushHandler(new FirePHPHandler());
-$logger->info(json_encode($_SESSION));
+//$logger->info(json_encode($_SESSION));
 
 
 $ckfinder = new CKFinder(__DIR__ . '/../../../config.php');
