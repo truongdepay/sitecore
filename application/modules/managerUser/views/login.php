@@ -8,20 +8,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Time: 2:18 PM
  */
 ?>
-
-<div class="row justify-content-md-center mt-5">
-    <div class="col col-lg-5 col-sm-12 col-md-12">
-        <h3>Login!!!</h3>
-        <?= form_open('managerUser/index/index?action=login'); ?>
+<div class="login-box">
+    <a href="<?= site_url('') ?>" class="logo-name text-lg text-center">EngLish CMS</a>
+    <p class="text-center m-t-md">Please login into your account.</p>
+    <?= form_open('managerUser/index/index?action=login'); ?>
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+            <input type="text" name="username" id="username" class="form-control" placeholder="Email" required>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn btn-primary" name="submit">Login</button>
-        <?= form_close(); ?>
-    </div>
+        <button type="submit" class="btn btn-success btn-block" name="submit">Login</button>
+        <p class="text-center m-t-xs text-sm">Do not have an account?</p>
+    <?= form_close(); ?>
+    <p class="text-center m-t-xs text-sm">2015 &copy; Modern by Steelcoders.</p>
 </div>
+
+
