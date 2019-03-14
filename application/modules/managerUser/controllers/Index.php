@@ -206,6 +206,6 @@ class Index extends MX_Controller
         $this->load->config('config_template');
         $this->load->view(config_item('pathHeaderAdmin'), $data);
         $this->load->view($template, $data);
-        $this->load->view(config_item('pathFooter'), $data);
+        $this->load->view(config_item('pathFooterAdmin'), $data);
     }
 }

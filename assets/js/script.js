@@ -2,7 +2,7 @@ $(document).ready(function(){
     /**
      * Xu ly khi nhap tieu de bai viet tao slugs
      */
-    $("#title").on('input', function () {
+    $("#title").bind('input', function () {
         var title;
         var host = window.location.origin;
         var uri = $(this).attr('url-data');

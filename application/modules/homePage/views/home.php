@@ -9,51 +9,383 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 ?>
-21h15': Pháp
-
-- Giám đốc thể thao Lille Luis Campos tuyên bố thẳng thừng rằng nếu muốn chiêu mộ Nicolas Pepe, Arsenal cứ việc bỏ ra 80 triệu euro để giải phóng hợp đồng. Cầu thủ chạy cánh này đang có một mùa giải ấn tượng khi đã có 12 bàn thắng và 7 kiến tạo tại Ligue 1.
-
-Từ 3 phút trước
-21h00': Italia
-
-- Mặc dù BLĐ Milan vẫn dành sự tin tưởng cho HLV Gattuso nhưng thành tích thi đấu bết bát của đội bóng áo sọc đỏ đen khiến họ phải suy nghĩ lại. Theo Corriere della Sera, Donadoni, Wenger và Francesco Guidolin là những ứng cử viên ngồi vào chiếc ghế HLV.
-
-Từ 19 phút trước
-20h45': Chuyển nhượng
-
-- Theo tờ Marca đưa tin, Real Madrid đang lên kế hoạch chiêu mộ tiền vệ Nabul Fekir của Lyon trong kỳ chuyển nhượng mùa Đông sắp tới. Cầu thủ 25 tuổi này chỉ còn hợp đồng đến tháng 6/2020 với Lyon và được Real nhắm đến để dần thay thế Luka Modric đã 33 tuổi. Mùa này, Fekir đã ghi 6 bàn và thực hiện 4 pha kiến tạo chỉ sau 16 lần ra sân.
-
-Từ 34 phút trước
-20h30': Bayern Munich
-
-- Chủ tịch HĐQT Bayern Munich Karl-Heinz Rummenigge trong buổi trả lời phỏng vấn mới đây trên tờ Kicker đã thổ lộ rằng ông muốn Xabi Alonso dẫn dắt Bayern trong tương lai. Rummenigge đánh giá rất cao phẩm chất thủ lĩnh và khả năng giao tiếp bằng nhiều ngôn ngữ của cựu tiền vệ người Tây Ban Nha.
-
-Từ 44 phút trước
-20h15': Chuyển nhượng
-
-- Paul Pogba và Isco là hai cầu thủ Juventus muốn chiêu mộ trong kỳ chuyển nhượng mùa Đông nhằm tăng cường khả năng sáng tạo cho hàng tiền vệ. Ngoài ra, một tiền vệ khác cũng nằm trong tầm ngắm của Bà đầm già thành Turin là Arsenal.
-
-Từ 1 giờ trước
-20h00': Pháp
-
-- PSG sẽ phải kiếm được khoảng 170 triệu euro để không vi phạm Luật công bằng tài chính (FFP) do UEFA đưa ra. Vì vậy, không loại trừ khả năng PSG phải bán một trong hai ngôi sao của họ là Neymar và Kylian Mbappe.
-
-Từ 1 giờ 20 phút trước
-19h45': Thế giới
-
-- Thần đồng Karamoko Dembele vừa ký bản hợp đồng chuyên nghiệp đầu tiên trong sự nghiệp cùng CLB chủ quản Celtic, với thời hạn đến tháng 6/2021. Tài năng trẻ này mới chỉ 15 tuổi và từng gây chú ý khi thi đấu cho đội U20 Celtic cách đây 2 năm.
-
-Từ 1 giờ 32 phút trước
-19h30': Ngoại hạng Anh
-
-- Liverpool đang đàm phán để ký một bản hợp đồng tài trợ áo đấu kỷ lục tại Ngoại hạng Anh, xô đổ bản hợp đồng 75 triệu bảng/năm M.U đã ký với Adidas. Cụ thể, đội chủ sân Anfield đang tiến hành đàm phán với nhà tài trợ New Balance để gia hạn hợp đồng. Hợp đồng hiện tại có hiệu lực đến hết mùa 2019/20 với trị giá 45 triệu bảng/năm. Ở bản hợp đồng mới, giá trị tài trợ sẽ tăng thêm ít nhất 30 triệu bảng/năm.
-
-Từ 1 giờ 48 phút trước
-19h15': Chuyển nhượng
-
-- Lukaku đã được đưa vào tầm ngắm của Juventus trong kế hoạch thay thế lão tướng 32 tuổi Mario Mandzukic sau khi mùa giải 2018/19 khép lại. Chân sút người Bỉ đang trải qua quãng thời gian đáng quên tại Old Trafford khi mới chỉ có 6 pha lập công sau 22 lần ra sân.
-
-Từ 2 giờ 1 phút trước
-19h00': Chuyển nhượng
-
-- Trong số báo ra ngày hôm nay, tờ nhật báo thể thao có trụ sở tại Barcelona Mundo Deportivo giật trên trang nhất dòng tít: "De Jong đã tới gần hơn!". Theo đó, gã khổng lồ xứ Catalan đã chấp nhận đòi hỏi về mặt lương bổng của tiền vệ trung tâm sáng giá người Hà Lan này.
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">107,200</p>
+                    <span class="info-box-title">User activity this month</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="icon-users"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">340,230</p>
+                    <span class="info-box-title">Page views</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="icon-eye"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p>$<span class="counter">653,000</span></p>
+                    <span class="info-box-title">Monthly revenue goal</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="icon-basket"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel info-box panel-white">
+            <div class="panel-body">
+                <div class="info-box-stats">
+                    <p class="counter">47,500</p>
+                    <span class="info-box-title">New emails recieved</span>
+                </div>
+                <div class="info-box-icon">
+                    <i class="icon-envelope"></i>
+                </div>
+                <div class="info-box-progress">
+                    <div class="progress progress-xs progress-squared bs-n">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- Row -->
+<div class="row">
+    <div class="col-lg-9 col-md-12">
+        <div class="panel panel-white">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="visitors-chart">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Visitors</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div id="flotchart1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="stats-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Browser Stats</h4>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>Google Chrome<div class="text-success pull-right">32%<i class="fa fa-level-up"></i></div></li>
+                                <li>Firefox<div class="text-success pull-right">25%<i class="fa fa-level-up"></i></div></li>
+                                <li>Internet Explorer<div class="text-success pull-right">16%<i class="fa fa-level-up"></i></div></li>
+                                <li>Safari<div class="text-danger pull-right">13%<i class="fa fa-level-down"></i></div></li>
+                                <li>Opera<div class="text-danger pull-right">7%<i class="fa fa-level-down"></i></div></li>
+                                <li>Mobile &amp; tablet<div class="text-success pull-right">4%<i class="fa fa-level-up"></i></div></li>
+                                <li>Others<div class="text-success pull-right">3%<i class="fa fa-level-up"></i></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-white" style="height: 100%;">
+            <div class="panel-heading">
+                <h4 class="panel-title">Server Load</h4>
+                <div class="panel-control">
+                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Expand/Collapse" class="panel-collapse"><i class="icon-arrow-down"></i></a>
+                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Reload" class="panel-reload"><i class="icon-reload"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="server-load">
+                    <div class="server-stat">
+                        <span>Total Usage</span>
+                        <p>67GB</p>
+                    </div>
+                    <div class="server-stat">
+                        <span>Total Space</span>
+                        <p>320GB</p>
+                    </div>
+                    <div class="server-stat">
+                        <span>CPU</span>
+                        <p>57%</p>
+                    </div>
+                </div>
+                <div id="flotchart2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-6">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h4 class="panel-title">Weather</h4>
+                <div class="panel-control">
+                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Reload" class="panel-reload"><i class="icon-reload"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="weather-widget">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="weather-top">
+                                <div class="weather-current pull-left">
+                                    <i class="wi wi-day-cloudy weather-icon"></i>
+                                    <p><span>83<sup>&deg;F</sup></span></p>
+                                </div>
+                                <h2 class="weather-day pull-right">Miami, FL<br><small><b>13th April, 2015</b></small></h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled weather-info">
+                                <li>Wind <span class="pull-right"><b>ESE 16 mph</b></span></li>
+                                <li>Humidity <span class="pull-right"><b>64%</b></span></li>
+                                <li>Pressure <span class="pull-right"><b>30.15 in</b></span></li>
+                                <li>UV Index <span class="pull-right"><b>6</b></span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled weather-info">
+                                <li>Cloud Cover <span class="pull-right"><b>60%</b></span></li>
+                                <li>Ceiling <span class="pull-right"><b>17800 ft</b></span></li>
+                                <li>Dew Point <span class="pull-right"><b>70° F</b></span></li>
+                                <li>Visibility <span class="pull-right"><b>10 mi</b></span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12">
+                            <ul class="list-unstyled weather-days row">
+                                <li class="col-xs-4 col-sm-2"><span>12:00</span><i class="wi wi-day-cloudy"></i><span>82<sup>&deg;F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>13:00</span><i class="wi wi-day-cloudy"></i><span>82<sup>&deg;F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>14:00</span><i class="wi wi-day-cloudy"></i><span>82<sup>&deg;F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>15:00</span><i class="wi wi-day-cloudy"></i><span>83<sup>&deg;F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>16:00</span><i class="wi wi-day-cloudy"></i><span>82<sup>&deg;F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>17:00</span><i class="wi wi-day-sunny-overcast"></i><span>82<sup>&deg;F</sup></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h4 class="panel-title">Inbox</h4>
+                <div class="panel-control">
+                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Reload" class="panel-reload"><i class="icon-reload"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="inbox-widget slimscroll">
+                    <a href="#">
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/avatar2.png" class="img-circle" alt=""></div>
+                            <p class="inbox-item-author">Sandra Smith</p>
+                            <p class="inbox-item-text">Hey! I'm working on your...</p>
+                            <p class="inbox-item-date">13:40 PM</p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/avatar3.png" class="img-circle" alt=""></div>
+                            <p class="inbox-item-author">Christopher</p>
+                            <p class="inbox-item-text">I've finished it! See you so...</p>
+                            <p class="inbox-item-date">13:34 PM</p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/avatar4.png" class="img-circle" alt=""></div>
+                            <p class="inbox-item-author">Amily Lee</p>
+                            <p class="inbox-item-text">This theme is awesome!</p>
+                            <p class="inbox-item-date">13:17 PM</p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/avatar5.png" class="img-circle" alt=""></div>
+                            <p class="inbox-item-author">Nick Doe</p>
+                            <p class="inbox-item-text">Nice to meet you</p>
+                            <p class="inbox-item-date">12:20 PM</p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/avatar2.png" class="img-circle" alt=""></div>
+                            <p class="inbox-item-author">Sandra Smith</p>
+                            <p class="inbox-item-text">Hey! I'm working on your...</p>
+                            <p class="inbox-item-date">10:15 AM</p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="inbox-item">
+                            <div class="inbox-item-img"><img src="assets/images/avatar4.png" class="img-circle" alt=""></div>
+                            <p class="inbox-item-author">Amily Lee</p>
+                            <p class="inbox-item-text">This theme is awesome!</p>
+                            <p class="inbox-item-date">9:56 AM</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel twitter-box">
+            <div class="panel-body">
+                <div class="live-tile" data-mode="flip" data-speed="750" data-delay="3000">
+                    <span class="tile-title pull-right">New Tweets</span>
+                    <i class="fa fa-twitter"></i>
+                    <div><h2 class="no-m">It’s kind of fun to do the impossible...</h2><span class="tile-date">10 April, 2015</span></div>
+                    <div><h2 class="no-m">Sometimes by losing a battle you find a new way to win the war...</h2><span class="tile-date">6 April, 2015</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel facebook-box">
+            <div class="panel-body">
+                <div class="live-tile" data-mode="carousel" data-direction="horizontal" data-speed="750" data-delay="4500">
+                    <span class="tile-title pull-right">Facebook Feed</span>
+                    <i class="fa fa-facebook"></i>
+                    <div><h2 class="no-m">If you're going through hell, keep going...</h2><span class="tile-date">23 March, 2015</span></div>
+                    <div><h2 class="no-m">To improve is to change; to be perfect is to change often...</h2><span class="tile-date">15 March, 2015</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12">
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h4 class="panel-title">Project Stats</h4>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive project-stats">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Project</th>
+                            <th>Status</th>
+                            <th>Manager</th>
+                            <th>Progress</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">452</th>
+                            <td>Mailbox Template</td>
+                            <td><span class="label label-info">Pending</span></td>
+                            <td>David Green</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        Action <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">327</th>
+                            <td>Wordpress Theme</td>
+                            <td><span class="label label-primary">In Progress</span></td>
+                            <td>Sandra Smith</td>
+                            <td>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">226</th>
+                            <td>Modern Admin Template</td>
+                            <td><span class="label label-success">Finished</span></td>
+                            <td>Chritopher Palmer</td>
+                            <td>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">178</th>
+                            <td>eCommerce template</td>
+                            <td><span class="label label-danger">Canceled</span></td>
+                            <td>Amily Lee</td>
+                            <td>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">157</th>
+                            <td>Website PSD</td>
+                            <td><span class="label label-info">Testing</span></td>
+                            <td>Nick Doe</td>
+                            <td>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">157</th>
+                            <td>Fronted Theme</td>
+                            <td><span class="label label-warning">Waiting</span></td>
+                            <td>David Green</td>
+                            <td>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
