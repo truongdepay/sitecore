@@ -55,4 +55,15 @@ class Money_model extends Base_models
         return $this->db->get()->result();
     }
 
+    public function searchContent($key = '', $limit = 10, $start = 0)
+    {
+        $this->db->distinct();
+        $this->db->select("content");
+        $this->db->like('content', $key);
+        $this->db->limit($limit, $start);
+        $this->db->order_by('content', 'ASC');
+        return $this->db->get($this->tableName)->result();
+
+    }
+
 }

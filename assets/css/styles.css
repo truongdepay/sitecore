@@ -14,5 +14,10 @@
     margin-right: 100px;
 }
 .td_suggestions {
-    min-width: 310px;
+    min-width: 270px;
+}
+
+#suggestions {
+    left: 0px;
+    top: 73px;
 }

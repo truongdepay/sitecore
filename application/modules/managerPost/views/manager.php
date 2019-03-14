@@ -63,6 +63,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="btn-group right" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-success m-r-xs" id="delete-more" onclick="window.location.href = '<?= site_url('managerPost/index/index?action=create') ?>'">Thêm mới bài viết</button>
                             <button type="button" class="btn btn-danger" id="delete-more" onclick="deleteData();">Xóa những bài đã chọn</button>
+                            <button type="button" class="btn btn-light rounded-0" id="public-more" onclick="publicData();"><i class="far fa-eye"></i> Công khai</button>
+                            <button type="button" class="btn btn-light rounded-0" id="public-more" onclick="draftData();"><i class="far fa-eye-slash"></i> Lưu nháp</button>
                         </div>
                     </div>
                 </div>

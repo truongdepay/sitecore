@@ -52,6 +52,9 @@ class Index extends MX_Controller
             case 'category':
                 $this->category();
                 break;
+            case 'change':
+                $this->change();
+                break;
             default:
                 $this->manager();
                 break;
