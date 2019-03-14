@@ -44,8 +44,8 @@ class Index extends MX_Controller
             case 'delete':
                 $this->delete();
                 break;
-            case 'category':
-                $this->category();
+            case 'getSuggest':
+                $this->getSuggest();
                 break;
             default:
                 $this->manager();
@@ -166,6 +166,32 @@ class Index extends MX_Controller
             ->_display();
         exit;
 
+    }
+
+    private function getSuggest()
+    {
+        $key = $this->input->get('key');
+
+        $suggest = $this->Money_model->searchContent($key);
+        if (count($suggest) > 0)
+        {
+            $response = [
+                'result' => 1,
+                'content' => $suggest
+            ];
+        } else {
+            $response = [
+                'result' => 0,
+                'content' => null
+            ];
+        }
+
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json', 'utf-8')
+            ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+            ->_display();
+        exit;
     }
 
     private function loadView($template, $data)

@@ -61,7 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row mb-3">
             <div class="col-12">
                 <div class="btn-group float-right" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary" id="delete-more" onclick="deleteData();">Xóa</button>
+                    <button type="button" class="btn btn-light rounded-0" id="public-more" onclick="publicData();"><i class="far fa-eye"></i> Công khai</button>
+                    <button type="button" class="btn btn-light rounded-0" id="public-more" onclick="draftData();"><i class="far fa-eye-slash"></i> Lưu nháp</button>
+                    <button type="button" class="btn btn-secondary rounded-0" id="delete-more" onclick="deleteData();"><i class="far fa-trash-alt"></i> Xóa</button>
                 </div>
             </div>
         </div>

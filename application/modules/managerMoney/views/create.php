@@ -14,17 +14,15 @@
     </div>
     <div class="form-group position-relative">
         <label for="content">Contents</label>
-        <input type="text" class="form-control" id="content" placeholder="contents" name="content">
-        <div class="position-absolute bg-secondary shadow  p-3" style="z-index: 100; display: none" id="suggestions">
+        <input type="text" class="form-control input-suggestion" id="content" placeholder="contents" name="content">
+        <div class="position-absolute bg-light shadow-lg  p-3" style="z-index: 100; display: none" id="suggestions">
             <div class="row">
                 <div class="col">
                     <div class="td_suggestions">
                         <h5>Gợi ý:</h5>
-                        <p class="border rounded p-1">Messi</p>
-                        <p class="border rounded p-1">Messi</p>
-                        <p class="border rounded p-1">Messi</p>
-                        <p class="border rounded p-1">Messi</p>
-                        <p class="border rounded p-1">Messi</p>
+                        <section id="result-suggest">
+
+                        </section>
                     </div>
                 </div>
             </div>
@@ -46,9 +44,47 @@
         });
     });
 
+    $(".input-suggestion").focus(function () {
+        $("#suggestions").slideDown(100);
+        var str = '';
+        var url = window.location.origin + '/managerMoney/index?action=getSuggest';
+        getSuggest(str, url);
+    });
+
+    $(".input-suggestion").blur(function () {
+        $("#suggestions").slideUp(500);
+    });
+
     //
     $("#content").on('input', function () {
-        $("#suggestions").show(100);
-        console.log(123);
+        var str = $(this).val();
+        var url = window.location.origin + '/managerMoney/index?action=getSuggest';
+        getSuggest(str, url);
+
     });
+
+    function  getSuggest(key, url) {
+        $.ajax({
+            url : url,
+            type : 'get',
+            data : {key:key},
+            dataType : 'json',
+            success : function(result)
+            {
+                var html = '';
+                if (result.result == 1) {
+                    $.each(result.content, function (key, value) {
+                        html += `<p class="border rounded p-1" onclick="selectSuggest(this);">${value.content}</p>`;
+                    });
+                } else {
+                    html += `<p class="border rounded p-1 text-danger" >Not result!!</p>`
+                }
+                $("#result-suggest").html(html);
+            }
+        });
+    }
+
+    function selectSuggest(elm) {
+        $("#content").val($(elm).text());
+    }
 </script>
