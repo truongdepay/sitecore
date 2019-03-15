@@ -28,6 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?= base_url('assets/plugins/metrojs/MetroJs.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= base_url('assets/plugins/toastr/toastr.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/fontawesome/css/all.css')?>">
+    <link href="<?= base_url('assets/plugins/bootstrap-datepicker/css/datepicker3.css') ?>" rel="stylesheet" type="text/css"/>
     <!-- Theme Styles -->
     <link href="<?= base_url('assets/css/modern.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= base_url('assets/css/themes/green.css') ?>" class="theme-color" rel="stylesheet" type="text/css"/>
@@ -62,6 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?= base_url('assets/plugins/metrojs/MetroJs.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/modern.js') ?>"></script>
     <script src="<?= base_url('assets/js/pages/dashboard.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') ?>"></script>
     <script src="<?= base_url('assets/js/script.js'); ?>"></script>
     <script>
         $(document).ready(function() {
@@ -351,7 +353,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">
                             </a>
                             <ul class="dropdown-menu dropdown-list" role="menu">
-                                <li role="presentation"><a href="profile.html"><i class="fa fa-user"></i>Profile</a></li>
+                                <li role="presentation"><a href="<?= site_url('managerUser/index/index?action=manager') ?>"><i class="fa fa-user"></i>Profile</a></li>
                                 <li role="presentation">
                                     <a href="<?= site_url('managerUser/index/index?action=logout') ?>"> <i class="fas fa-sign-out-alt"></i>Log out</a>
                                 </li>
@@ -404,6 +406,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <ul class="sub-menu">
                         <li><a href="<?= site_url('managerCat/index/index?action=index'); ?>">Quản lý</a></li>
                         <li><a href="<?= site_url('managerCat/index/index?action=create'); ?>">Thêm mới</a></li>
+                    </ul>
+                </li>
+                <li class="droplink"><a href="#" class="waves-effect waves-button"><i class="fas fa-list-ol"></i><p>Money</p><span class="arrow"></span></a>
+                    <ul class="sub-menu">
+                        <li><a href="<?= site_url('managerMoney/index/index?action=create'); ?>">Thêm mới</a></li>
                     </ul>
                 </li>
             </ul>

@@ -29,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?= base_url('assets/plugins/metrojs/MetroJs.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= base_url('assets/plugins/toastr/toastr.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/fontawesome/css/all.css')?>">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- Theme Styles -->
     <link href="<?= base_url('assets/css/modern.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= base_url('assets/css/themes/green.css') ?>" class="theme-color" rel="stylesheet" type="text/css"/>
