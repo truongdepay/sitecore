@@ -44,11 +44,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-white">
-            <div class="panel-heading">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= $siteTitle ?></h4>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 <?php
                 if ($this->session->userdata('edit')) {
                     ?>
@@ -83,16 +83,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <tbody>
                     <?php foreach ($result as $key => $value) { ?>
                         <tr>
-                            <td><input type="checkbox" value="<?= $value->id; ?>" onclick="selectRow(this);"></td>
+                            <td><div class="form-check form-check-inline">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2-<?= $value->id; ?>" value="<?= $value->id; ?>" onclick="selectRow(this);">
+                                        <label class="custom-control-label" for="customCheck2-<?= $value->id; ?>"></label>
+                                    </div>
+                                </div>
                             <th scope="row"><?= $value->id; ?></th>
                             <th><img src="<?= base_url($value->thumb); ?>" alt="" width="64px"></th>
                             <td><?= $value->title; ?></td>
                             <td><?= convertStatus($value->status); ?></td>
                             <td><?= $value->cat_title; ?></td>
                             <td>
-                                <button onclick="window.open('<?= site_url('managerPost/index/index?action=edit&id=' . $value->id); ?>', '_parent');" class="btn btn-default text-info"><i class="far fa-edit"></i></button>
-                                <button data-toggle="modal" data-target="#deleteModal-<?= $value->id ?>" class="btn btn-default text-danger"><i class="far fa-trash-alt"></i></button>
-                                <button data-toggle="modal" data-target="#exampleModalLong-<?= $value->id ?>" class="btn btn-default text-primary"><i class="fas fa-info-circle"></i></button>
+                                <button onclick="window.open('<?= site_url('managerPost/index/index?action=edit&id=' . $value->id); ?>', '_parent');" class="btn btn-success "><i class="far fa-edit"></i></button>
+                                <button data-toggle="modal" data-target="#deleteModal-<?= $value->id ?>" class="btn btn-danger "><i class="far fa-trash-alt"></i></button>
+                                <button data-toggle="modal" data-target="#exampleModalLong-<?= $value->id ?>" class="btn btn-default "><i class="fas fa-info-circle"></i></button>
                             </td>
                         </tr>
                         <!-- Modal -->

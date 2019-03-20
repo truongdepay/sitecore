@@ -7,14 +7,16 @@
  */
 ?>
 
-</div>
-</div><!-- Row -->
-</div><!-- Main Wrapper -->
-</div><!-- Page Inner -->
-</main><!-- Page Content -->
-
-
+<script>
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".preloader").fadeOut();
+    // ==============================================================
+    // Login and Recover Password
+    // ==============================================================
+    $('#to-recover').on("click", function() {
+        $("#loginform").slideUp();
+        $("#recoverform").fadeIn();
+    });
+</script>
 </body>
-
-<!-- Mirrored from stacksthemes.com/modern/admin1/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Mar 2019 03:09:44 GMT -->
 </html>

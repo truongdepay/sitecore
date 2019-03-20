@@ -62,8 +62,6 @@ class Index extends MX_Controller
         $data = [];
         $data['siteTitle'] = 'Thay đổi thông tin Profile';
 
-
-
         $template = 'manager';
         $this->loadView($template, $data);
     }
@@ -134,7 +132,7 @@ class Index extends MX_Controller
         }
 
         $template = 'create';
-        $this->loadView($template, $data);
+        $this->loadViewLogin($template, $data);
     }
 
     private function login()
@@ -170,7 +168,7 @@ class Index extends MX_Controller
         }
 
         $template = 'login';
-        $this->loadView($template, $data);
+        $this->loadViewLogin($template, $data);
     }
 
     private function logout()
@@ -186,22 +184,16 @@ class Index extends MX_Controller
         }
     }
 
-    private function ckfinder()
-    {
-        $check = $this->users->checkLogin();
-        $response = [
-            'result' => $check
-        ];
-
-        $this->output
-            ->set_status_header(200)
-            ->set_content_type('application/json', 'utf-8')
-            ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
-            ->_display();
-        exit;
-    }
 
     private function loadView($template, $data)
+    {
+        $this->load->config('config_template');
+        $this->load->view(config_item('pathHeader'), $data);
+        $this->load->view($template, $data);
+        $this->load->view(config_item('pathFooter'), $data);
+    }
+
+    private function loadViewLogin($template, $data)
     {
         $this->load->config('config_template');
         $this->load->view(config_item('pathHeaderAdmin'), $data);

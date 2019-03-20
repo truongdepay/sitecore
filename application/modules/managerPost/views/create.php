@@ -9,12 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 ?>
 <div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-white">
-            <div class="panel-heading">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= $siteTitle; ?></h4>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
                 <?php
                 if ($this->session->userdata('error')) {
                     echo displayError($this->session->userdata('error'));
