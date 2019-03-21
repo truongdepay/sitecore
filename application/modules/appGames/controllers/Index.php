@@ -115,7 +115,7 @@ class Index extends MX_Controller
                             'result' => 1,
                             'data' => [
                                 'turn' => $preTurn -1,
-                                'notify' => $numberIn . ': Bạn đã hết 5 lượt đoán! Số <span class="text-info">' . $number .'</span> là số cần tìm!'
+                                'notify' => $numberIn . ': Bạn đã hết 5 lượt đoán! Số <span class="text-info">' . $number .'</span> là số cần tìm! <span class="text-danger"></span>'
                             ],
                             'csrf' => [
                                 'csrf_value' => $this->security->get_csrf_hash()
@@ -139,7 +139,7 @@ class Index extends MX_Controller
                         'result' => 0,
                         'data' => [
                             'turn' => 0,
-                            'notify' => $numberIn . ': Bạn đã hết 5 lượt đoán! Số <span class="text-info">' . $number .'</span> là số cần tìm!'
+                            'notify' => $numberIn . ': Bạn đã hết 5 lượt đoán! Số <span class="text-info">' . $number .'</span> là số cần tìm! <span class="text-danger">Tiếp tục để săn thẻ cào nào!</span>'
                         ],
                         'csrf' => [
                             'csrf_value' => $this->security->get_csrf_hash()

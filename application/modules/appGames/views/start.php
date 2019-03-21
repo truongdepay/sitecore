@@ -6,12 +6,17 @@
  * Time: 10:41 AM
  */
 ?>
-<h3>Bạn còn <?= $turn ?> lượt chơi!</h3>
-<button class="btn btn-success" onclick="startGame()">Start Games</button>
-<?= form_open('appGames/index/index', [
-    'id' => 'formStartGame'
-]) ?>
-<?= form_close() ?>
+<div class="row justify-content-lg-center justify-content-md-center">
+    <div class="col-12 col-md-6 col-lg-6">
+        <h1 class="text-light">Bạn còn <?= $turn ?> lượt chơi!</h1>
+        
+        <button class="btn btn-success" onclick="startGame()">Start Games</button>
+        <?= form_open('appGames/index/index', [
+            'id' => 'formStartGame'
+        ]) ?>
+        <?= form_close() ?>
+    </div>
+</div>
 
 <script>
     function startGame() {

@@ -6,14 +6,14 @@
  * Time: 3:52 PM
  */
 ?>
-<div class="row justify-content-lg-center">
-    <div class="col-lg-6">
+<div class="row justify-content-lg-center justify-content-md-center">
+    <div class="col-md-7 col-lg-6">
 <!--        <img src="--><?//= base_url('assets/img/banner.jpg') ?><!--" alt="banner" class="w-100">-->
-        <div class="card mt-2">
-            <div class="card-header">
-                <h4>Lượt đoán <span class="text-danger" id="turn">5</span>/5 lượt</h4>
+        <div class="card mt-2 border-0">
+            <div class="card-header bg-danger">
+                <h4 class="text-light">Lượt còn lại: <span class="text-warning" id="turn">5</span></h4>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-light-info">
                 <h3 class="g_message" style="text-align: center">Vui lòng chọn số!</h3>
             </div>
         </div>
@@ -24,23 +24,39 @@
         </div>
         <div class="card mt-1" id="body-play">
             <div class="card-body">
-                <div class="row">
-                    <?php
-                    for ($i = 0; $i < $keyboard; $i++) {
-                        ?>
-                        <div class="col-4 col-sm-3 col-md-3 col-lg-2 p-2">
-                            <button class="btn btn-success w-100" onclick="selectNumber(this);"><?= $i ?></button>
+                <div class="row justify-content-lg-center justify-content-md-center">
+                    <div class="col-md-7 col-lg-7">
+                        <div class="row">
+                            <?php
+                            for ($i = 1; $i < $keyboard; $i++) {
+                                ?>
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-4 p-2">
+                                    <button class="btn btn-success w-100" onclick="selectNumber(this);"><?= $i ?></button>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 p-2 justify-content-lg-center">
+
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 p-2 justify-content-lg-center">
+                                <button class="btn btn-success w-100" onclick="selectNumber(this);">0</button>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 p-2 justify-content-lg-center">
+
+                            </div>
                         </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-                <div class="row">
-                    <div class="col-6 p-2">
-                        <button class="btn btn-danger w-100" onclick="resetNumber();">Reset</button>
-                    </div>
-                    <div class="col-6 p-2">
-                        <button class="btn btn-primary w-100" onclick="sendNumber();">Xác nhận</button>
+                        <div class="row">
+                            <div class="col-6 p-2">
+                                <button class="btn btn-danger w-100" onclick="resetNumber();">Reset</button>
+                            </div>
+                            <div class="col-6 p-2">
+                                <button class="btn btn-primary w-100" onclick="sendNumber();">Xác nhận</button>
+                            </div>
+                            <div class="col-12 p-2">
+                                <button class="btn btn-light w-100" onclick="window.location.href = '<?= site_url('appGames/index/start') ?>'">Thoát</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@
 ?>
 
 <div class="container">
-    <div class="row justify-content-lg-center">
+    <div class="row justify-content-lg-center justify-content-md-center">
         <div class="col-12 col-sm-12 col-md-8 col-lg-6">
             <div class="card border-0 rounded shadow">
                 <div class="card-header">
