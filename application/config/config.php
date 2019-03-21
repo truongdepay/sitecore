@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if(ENVIRONMENT === 'production')
 {
-	$config['base_url'] = 'https://vegitozenn.cf';
+	$config['base_url'] = 'https://vegitoz.com';
 } else {
 	$config['base_url'] = 'http://demo.io';
 }

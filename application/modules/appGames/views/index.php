@@ -8,11 +8,13 @@
 ?>
 <div class="row justify-content-lg-center">
     <div class="col-lg-6">
-        <img src="<?= base_url('assets/img/banner.jpg') ?>" alt="banner" class="w-100">
+<!--        <img src="--><?//= base_url('assets/img/banner.jpg') ?><!--" alt="banner" class="w-100">-->
         <div class="card mt-2">
-            <div class="card-header">Số bạn đã chọn</div>
+            <div class="card-header">
+                <h4>Lượt đoán <span class="text-danger" id="turn">5</span>/5 lượt</h4>
+            </div>
             <div class="card-body">
-                <h2 class="g_message" style="text-align: center">Vui lòng chọn số!</h2>
+                <h3 class="g_message" style="text-align: center">Vui lòng chọn số!</h3>
             </div>
         </div>
         <div class="row">
@@ -20,7 +22,7 @@
 
             </div>
         </div>
-        <div class="card mt-1">
+        <div class="card mt-1" id="body-play">
             <div class="card-body">
                 <div class="row">
                     <?php
@@ -41,6 +43,14 @@
                         <button class="btn btn-primary w-100" onclick="sendNumber();">Xác nhận</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4>Lịch sử chơi</h4>
+            </div>
+            <div class="card-body" id="history">
+
             </div>
         </div>
     </div>
@@ -84,7 +94,29 @@
                 data : {csrf_name:csrf_value, number:number},
                 dataType : 'json',
                 success : function (result) {
+                    $("#val-select").val('');
+                    if (result.result == 1) {
+                        if (result.data.turn == 0) {
+                            var html = '<button class="btn btn-success d-block m-auto" onclick="startGame()">Chơi lại</button>'+
+                                '<form method="post" action="" id="formStartGame">' +
+                                '<input type="hidden" name="csrf_name" value="'+ result.csrf.csrf_value +'">'+
+                                '</form>';
+                            $("#csrf").val(result.csrf.csrf_value);
+                            $(".g_message").html(result.data.notify);
+                            $("#turn").html(result.data.turn);
+                            $("#history").append('<h5>' + result.data.notify + '</h5>');
+                            $(".g_message").after(html);
+                            $("#body-play").html('');
+                        } else {
+                            $("#csrf").val(result.csrf.csrf_value);
+                            $(".g_message").html(result.data.notify);
+                            $("#turn").html(result.data.turn);
+                            $("#history").append('<h5>' + result.data.notify + '</h5>');
+                        }
 
+                    } else if (result.result == 0) {
+                        $("#body-play").html('');
+                    }
                 }
             });
         } else {
@@ -94,4 +126,10 @@
             }, 2000);
         }
     }
+
+    function startGame() {
+        var idForm = document.getElementById('formStartGame');
+        idForm.submit();
+    }
+
 </script>
