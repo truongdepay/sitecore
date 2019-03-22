@@ -18,14 +18,38 @@ class User extends MX_Controller
 
         $this->load->library([
             'session',
-            'security'
+            'security',
+            'form_validation',
         ]);
+        $this->load->database();
+
+        $this->method = $this->input->server('REQUEST_METHOD');
     }
 
     public function register()
     {
         $data = [];
         $data['siteTitle'] = 'Đăng ký';
+
+        if (strtolower($this->method) == 'post') {
+            $config = array(
+                array(
+                    'field' => 'username',
+                    'label' => 'Username',
+                    'rules' => 'required|alpha_numeric|max_length[32]|min_length[3]|is_unique[user.username]'
+                )
+            );
+            $this->form_validation->set_rules($config);
+            if ($this->form_validation->run() == FALSE)
+            {
+
+            }
+            else
+            {
+                echo "true";
+            }
+        }
+
         $template = 'user_register';
         $this->loadViewGame($template, $data);
     }
