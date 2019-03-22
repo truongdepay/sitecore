@@ -32,6 +32,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?= base_url('assets/dist/js/custom.min.js') ?>"></script>
     <script src="<?= base_url('assets/assets/extra-libs/prism/prism.js') ?>"></script>
     <script src="<?= base_url('assets/js/script.js'); ?>"></script>
+    <style>
+        body {
+            background: url(https://cdn.pixabay.com/photo/2017/04/20/10/36/bokeh-2245355_960_720.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 <div id="main-wrapper">
