@@ -18,27 +18,27 @@
                     <?= form_open() ?>
                     <div class="form-group row ">
                         <div class="col-12 ">
-                            <input class="form-control form-control-lg" type="text" required=" " placeholder="Name" name="fullname">
+                            <input class="form-control form-control-lg" type="text" placeholder="Name" name="fullname">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-12 ">
-                            <input class="form-control form-control-lg" type="text" required=" " placeholder="Username" name="username">
+                            <input class="form-control form-control-lg" type="text" placeholder="Username" name="username">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-12 ">
-                            <input class="form-control form-control-lg" type="email" required=" " placeholder="Email" name="email">
+                            <input class="form-control form-control-lg" type="email" placeholder="Email" name="email">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-12 ">
-                            <input class="form-control form-control-lg" type="password" required=" " placeholder="Password" name="password">
+                            <input class="form-control form-control-lg" type="password" placeholder="Password" name="password">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-12 ">
-                            <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password" name="pass_confirm">
+                            <input class="form-control form-control-lg" type="password" placeholder="Confirm Password" name="pass_confirm">
                         </div>
                     </div>
                     <div class="form-group text-center ">
