@@ -50,4 +50,13 @@ class Users
             redirect('');
         }
     }
+
+    public function createPassword($password = '')
+    {
+        $data = [];
+        $data['salt'] = sha1(time());
+        $strPassword = $password . $data['salt'];
+        $data['password'] = password_hash($strPassword, PASSWORD_BCRYPT);
+        return $data;
+    }
 }
