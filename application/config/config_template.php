@@ -12,3 +12,5 @@ $config['pathHeaderGame']  = 'includes/header_game';
 $config['pathFooter']  = 'includes/footer';
 $config['pathFooterAdmin']  = 'includes/footer_admin';
 $config['pathFooterGame']  = 'includes/footer_game';
+
+$config['regist_success'] = 'template/regist_success';

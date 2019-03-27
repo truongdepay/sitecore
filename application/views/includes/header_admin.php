@@ -18,8 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?= base_url('assets/dist/css/style.min.css'); ?>" rel="stylesheet"/>
     <link href="<?= base_url('assets/assets/extra-libs/prism/prism.css'); ?>" rel="stylesheet"/>
     <link href="<?= base_url('assets/fontawesome/css/all.css')?>" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="<?= base_url('assets/js/jquery-3.3.1.min.js') ?>"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="<?= base_url('assets/assets/libs/popper.js/dist/umd/popper.min.js') ?>"></script>
     <script src="<?= base_url('assets/assets/libs/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
     <script src="<?= base_url('assets/dist/js/app.min.js') ?>"></script>
