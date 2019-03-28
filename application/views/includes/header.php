@@ -582,6 +582,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <span class="hide-menu">Quản lý</span>
                                 </a>
                             </li>
+                            <li class="sidebar-item">
+                                <a href="<?= site_url('managerPost/order/index') ?>" class="sidebar-link">
+                                    <i class="mdi mdi-email-alert"></i>
+                                    <span class="hide-menu">Order bài viết</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 <!--product-->
