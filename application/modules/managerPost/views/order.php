@@ -41,7 +41,7 @@
                             <td>
                                 <div class="form-check form-check-inline">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="slide-check-<?= $value->id; ?>" value="<?= $value->id; ?>" onclick="">
+                                        <input type="checkbox" class="custom-control-input" id="slide-check-<?= $value->id; ?>" value="<?= $value->id; ?>" onclick="setType(this)">
                                         <label class="custom-control-label" for="slide-check-<?= $value->id; ?>"></label>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                             <td>
                                 <div class="form-check form-check-inline">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="home-check-<?= $value->id; ?>" value="<?= $value->id; ?>" onclick="">
+                                        <input type="checkbox" class="custom-control-input" id="home-check-<?= $value->id; ?>" value="<?= $value->id; ?>" onclick="setType(this)">
                                         <label class="custom-control-label" for="home-check-<?= $value->id; ?>"></label>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                             <td>
                                 <div class="form-check form-check-inline">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="hot-check-<?= $value->id; ?>" value="<?= $value->id; ?>" onclick="">
+                                        <input type="checkbox" class="custom-control-input" id="hot-check-<?= $value->id; ?>" value="<?= $value->id; ?>" onclick="setType(this)">
                                         <label class="custom-control-label" for="hot-check-<?= $value->id; ?>"></label>
                                     </div>
                                 </div>
@@ -70,3 +70,23 @@
         </div>
     </div>
 </div>
+<input type="hidden" name="csrf_name" value="<?= $csrf_value ?>">
+<script>
+    function setType(elm) {
+        var id = $(elm).val();
+        var action = $(elm).prop('checked');
+        var csrf_value = $("input[name=csrf_name]").val();
+        var type = 1;
+        var url = window.location.origin + '/managerPost/order/index';
+        console.log(csrf_value);
+        $.ajax({
+            url : url,
+            type : 'post',
+            data : {csrf_name:csrf_value, type:type, id:id, action:action},
+            dataType : 'json',
+            success : function (result) {
+
+            }
+        });
+    }
+</script>

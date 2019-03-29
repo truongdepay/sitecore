@@ -8,6 +8,7 @@
 
 class Order extends MX_Controller
 {
+    protected $method;
     public function __construct()
     {
         parent::__construct();
@@ -17,19 +18,35 @@ class Order extends MX_Controller
         ]);
 
         $this->load->library([
-            'session'
+            'session',
+            'security'
         ]);
+
+        $this->method = $this->input->server('REQUEST_METHOD');
     }
 
     public function index()
     {
-        $data = [];
-        $data['siteTitle'] = 'Order bài viết';
-        $this->load->model('Post_model');
-        $result = $this->Post_model->getResult();
-        $data['result'] = $result;
-        $template = 'order';
-        $this->loadView($template, $data);
+
+        if (strtolower($this->method) == 'post') {
+            $response = [];
+
+
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($response));
+        } else {
+            $data = [];
+            $data['siteTitle'] = 'Order bài viết';
+            $this->load->model('Post_model');
+            $result = $this->Post_model->getResult();
+            $data['result'] = $result;
+            $data['csrf_value'] = $this->security->get_csrf_hash();
+            $template = 'order';
+            $this->loadView($template, $data);
+        }
+
     }
 
     private function loadView($template, $data)
