@@ -11,8 +11,8 @@
     <div class="row justify-content-lg-center justify-content-md-center">
         <div class="col-12 col-sm-12 col-md-8 col-lg-6">
             <div class="card border-0 rounded shadow">
-                <div class="card-header">
-                    <h3 class="text-danger">Điền thông tin đăng ký</h3>
+                <div class="card-header bg-info">
+
                 </div>
                 <div class="card-body">
                     <?= form_open() ?>

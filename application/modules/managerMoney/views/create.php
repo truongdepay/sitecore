@@ -6,37 +6,41 @@
  * Time: 10:03 AM
  */
 ?>
-<h3 class="mt-5">Create News</h3>
-<?= form_open('managerMoney/index/index?action=create'); ?>
-    <div class="form-group">
-        <label for="date">Date</label>
-        <input type="text" class="form-control" id="date" placeholder="date..." name="date">
-    </div>
-    <div class="form-group position-relative">
-        <label for="content">Contents</label>
-        <input type="text" class="form-control input-suggestion" id="content" placeholder="contents" name="content">
-        <div class="position-absolute bg-light shadow-lg  p-3" style="z-index: 100; display: none" id="suggestions">
-            <div class="row">
-                <div class="col">
-                    <div class="td_suggestions">
-                        <h5>Gợi ý:</h5>
-                        <section id="result-suggest">
+<div class="row justify-content-center m-3">
+    <div class="col-md-6">
+        <h3 class="mt-5">Create News</h3>
+        <?= form_open('managerMoney/index/index?action=create'); ?>
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" class="form-control" id="date" placeholder="date..." name="date">
+        </div>
+        <div class="form-group position-relative">
+            <label for="content">Contents</label>
+            <input type="text" class="form-control input-suggestion" id="content" placeholder="contents" name="content">
+            <div class="position-absolute bg-light shadow-lg  p-3" style="z-index: 100; display: none" id="suggestions">
+                <div class="row">
+                    <div class="col">
+                        <div class="td_suggestions">
+                            <h5>Gợi ý:</h5>
+                            <section id="result-suggest">
 
-                        </section>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="money">Money</label>
-        <input type="number" class="form-control" id="money" placeholder="money" name="money">
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-<?= form_close(); ?>
+        <div class="form-group">
+            <label for="money">Money</label>
+            <input type="number" class="form-control" id="money" placeholder="money" name="money">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <?= form_close(); ?>
 
-<?= modules::run('managerMoney/index/spendToday'); ?>
+        <?= modules::run('managerMoney/index/spendToday'); ?>
 
+    </div>
+</div>
 <script>
     $(function() {
         $( "#date" ).datepicker({

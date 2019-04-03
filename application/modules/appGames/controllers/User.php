@@ -38,7 +38,7 @@ class User extends MX_Controller
     {
         $data = [];
         $data['siteTitle'] = 'Đăng ký';
-
+        $template = 'user_register';
         if (strtolower($this->method) == 'post') {
             $fullname = $this->input->post('fullname');
             $username = $this->input->post('username');
@@ -55,7 +55,7 @@ class User extends MX_Controller
             $this->form_validation->set_rules($config);
             if ($this->form_validation->run() == FALSE)
             {
-                // action
+                $this->loadViewGame($template, $data);
             }
             else
             {
@@ -72,11 +72,13 @@ class User extends MX_Controller
                 ];
                 $this->load->model('User_model');
                 $this->User_model->add($dataUser);
+                $this->load->config('config_template');
+                $templateSuccess = config_item('regist_success');
+                $this->loadViewGame($templateSuccess, $data);
             }
+        } else {
+            $this->loadViewGame($template, $data);
         }
-
-        $template = 'user_register';
-        $this->loadViewGame($template, $data);
     }
 
     private function loadViewGame($template, $data)
