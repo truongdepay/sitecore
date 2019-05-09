@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Index extends MX_Controller
 {
+    protected $method;
     public function __construct()
     {
         parent::__construct();
@@ -26,6 +27,7 @@ class Index extends MX_Controller
         $this->load->model('Money_model');
         $this->load->config('config_notification');
         $this->noCommon = config_item('notifyCommon');
+        $this->method = strtolower($this->input->server('REQUEST_METHOD'));
     }
 
     public function index()
@@ -59,7 +61,7 @@ class Index extends MX_Controller
         $data = [];
         $data['siteTitle'] = 'Manager Money';
 
-        if (strtolower($this->input->server('REQUEST_METHOD')) == 'post') {
+        if ($this->method == 'post') {
             $date = $this->input->post('date');
             $content = $this->input->post('content');
             $money = $this->input->post('money');
@@ -93,6 +95,67 @@ class Index extends MX_Controller
         }
 
         $this->loadView($template, $data);
+    }
+
+    private function edit()
+    {
+        $template = 'edit';
+        $data = [];
+
+        $id = $this->input->get('id');
+        $this->load->model('money_model');
+        $checkExist = $this->money_model->checkExist('id', $id);
+        if ($checkExist > 0) {
+            $data['item'] = $this->money_model->getInfo($id);
+            $data['siteTitle'] = 'Sửa - ' . $data['item']->content;
+            if ($this->method == 'post') {
+                $date = $this->input->post('date');
+                $content = $this->input->post('content');
+                $money = $this->input->post('money');
+
+                $error = [];
+
+                if (!checkNull($date)) {
+                    $error['date'] = 'Not null';
+                }
+
+                if (!checkNull($content)) {
+                    $error['content'] = 'Not null';
+                }
+
+                if (!priceCheck($money)) {
+                    $error['money'] = 'Tiền sai';
+                }
+                if (empty($error)) {
+                    $dataSave = [
+                        'date' => strtotime($date),
+                        'content' => $content,
+                        'money' => $money
+                    ];
+
+                    $this->Money_model->update($id, $dataSave);
+                    redirect('managerMoney/index/index?action=create');
+                } else {
+                    redirect('managerMoney/index/index?action=create');
+                }
+            }
+        } else {
+            redirect('ManagerMoney/index/index?action=create');
+        }
+        $this->loadView($template, $data);
+    }
+
+    private function delete()
+    {
+        $id = $this->input->get('id');
+        $this->load->model('money_model');
+        $checkExist = $this->money_model->checkExist('id', $id);
+        if ($checkExist > 0) {
+            $this->money_model->delete($id);
+            redirect('ManagerMoney/index/index?action=create');
+        } else {
+            redirect('ManagerMoney/index/index?action=create');
+        }
     }
 
     public function spendToday()
