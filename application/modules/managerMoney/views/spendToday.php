@@ -32,6 +32,7 @@
         <th scope="col">Content</th>
         <th scope="col">Money</th>
         <th scope="col">Date</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -43,6 +44,11 @@
             <td><?= $value->content; ?></td>
             <td><?= number_format($value->money); ?></td>
             <td><?= date(date('d-m-Y', $value->date)); ?></td>
+            <td>
+                <a href="javascript:deleteItem(<?= $value->id ?>, '<?= site_url('managerMoney/index/index?action=delete&id=' . $value->id); ?>');">Xóa</a>
+                |
+                <a href="<?= site_url('ManagerMoney/index/index?action=edit&id=' . $value->id) ?>">Sửa</a>
+            </td>
         </tr>
         <?php
     }
@@ -98,5 +104,12 @@
                 $("#resultSearch").html(html);
             }
         });
+    }
+
+    function deleteItem(id, url) {
+        var confirm = window.confirm('Xác nhận xóa?');
+        if (confirm === true) {
+            window.location.href = url;
+        }
     }
 </script>
